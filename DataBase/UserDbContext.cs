@@ -18,7 +18,6 @@ namespace BriefResume.DataBase
         public DbSet<Ablity> ablities { get; set; }
         public DbSet<InterviewerAttribute> interviewerAttributes { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -45,7 +44,6 @@ namespace BriefResume.DataBase
 
             builder.Entity<InterviewerAttribute>().HasKey(c=>c.InterviewerId);
             builder.Entity<SeekerAttribute>().HasKey(c => c.JobSeekerId);
-
 
         }
 

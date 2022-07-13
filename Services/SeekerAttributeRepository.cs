@@ -1,5 +1,7 @@
-﻿using BriefResume.IService;
+﻿using BriefResume.DataBase;
+using BriefResume.IService;
 using BriefResume.Models;
+using BriefResume.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +9,13 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Services
 {
-    public class SeekerAttributeRepository : IBaseService<SeekerAttribute>
+    public class SeekerAttributeRepository : BaseService<SeekerAttribute>
     {
-        public bool Create(SeekerAttribute entity)
+        private readonly UserDbContext _userDbContext;
+        public SeekerAttributeRepository(UserDbContext userDbContext) :base(userDbContext)
         {
-            throw new NotImplementedException();
+            _userDbContext = userDbContext;
         }
 
-        public bool Delete(SeekerAttribute entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SeekerAttribute Find(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(SeekerAttribute entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

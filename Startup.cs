@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -74,8 +75,35 @@ namespace BriefResume
                 };
             });
 
-
-
+            //MVC配置
+            services.AddControllers(setupAction => {
+                setupAction.ReturnHttpNotAcceptable = true;//若为false则忽略请求头accept指定的格式
+            })
+                //.AddNewtonsoftJson(setupAction =>
+                //{ //若与下方xml写反，则当patch时会先默认使用xml
+                //    setupAction.SerializerSettings.ContractResolver =
+                //            new CamelCasePropertyNamesContractResolver();//注册解析jsondocument
+                //})
+                .AddXmlDataContractSerializerFormatters()//内容协商,可以使用Xml输出数据
+                .ConfigureApiBehaviorOptions(setupAction =>
+                {
+                setupAction.InvalidModelStateResponseFactory = context =>//数据验证失败时自定义报错信息
+                {
+                    var problemDetail = new ValidationProblemDetails(context.ModelState)
+                    {
+                        Type = "any",
+                        Title = "数据验证失败",
+                        Status = StatusCodes.Status422UnprocessableEntity,//指定验证失败返回422
+                        Detail = "查看详细说明",
+                        Instance = context.HttpContext.Request.Path
+                    };
+                    problemDetail.Extensions.Add("traceId", context.HttpContext.TraceIdentifier);
+                    return new UnprocessableEntityObjectResult(problemDetail)
+                    {
+                        ContentTypes = { "application/problem+json" }//指定错误信息的格式
+                    };
+                };
+                });
 
         }
 

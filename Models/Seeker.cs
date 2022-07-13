@@ -11,5 +11,6 @@ namespace BriefResume.Models
         public string Preference { get; set; }
         public InterviewerAttribute InterviewerAttribute { get; set; }
         public SeekerAttribute SeekerAttribute { get; set; }
+        public DateTime CreateDatetime { get; set; }
     }
 }
