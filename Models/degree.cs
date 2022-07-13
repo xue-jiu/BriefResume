@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Models
 {
-    public class Interviewer
+    public enum degree
     {
+        Bachelor,
+        Master,
+        doctor
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Linq.Expressions;
 
 namespace BriefResume.IService
 {
@@ -33,6 +34,6 @@ namespace BriefResume.IService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        T Find(string id);
+        T Find(Guid id);
     }
 }

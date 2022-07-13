@@ -38,7 +38,7 @@ namespace BriefResume
             });
             services.AddDataProtection();
 
-            services.AddIdentityCore<JobSeeker>(opt => //与AddIdentity不同,AddIdentity还会添加默认界面
+            services.AddIdentityCore<Seeker>(opt => //与AddIdentity不同,AddIdentity还会添加默认界面
             {
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireLowercase = false;
@@ -53,8 +53,8 @@ namespace BriefResume
                 .AddEntityFrameworkStores<UserDbContext>()
                 .AddDefaultTokenProviders()
                 .AddRoleManager<RoleManager<RoleExtension>>()//AddRoles包含了RoleManager
-                .AddUserManager<UserManager<JobSeeker>>()
-                .AddSignInManager<SignInManager<JobSeeker>>();
+                .AddUserManager<UserManager<Seeker>>()
+                .AddSignInManager<SignInManager<Seeker>>();
 
             //Jwt
             services.AddOptions().Configure<JwtSettings>(_confirguration.GetSection("Jwt"));
