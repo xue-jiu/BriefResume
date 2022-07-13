@@ -96,6 +96,12 @@ namespace BriefResume.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public IActionResult TryController()
+        {
+            return Ok("试验成功");
+        }
+
     }
 
 }
