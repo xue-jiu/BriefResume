@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Services
 {
-    public class InterviewerAttributeRepository : BaseService<InterviewerAttribute>
+    public class InterviewerAttributeRepository : BaseService<InterviewerAttribute>, IInterviewerAttributeRepository
     {
         private readonly UserDbContext _userDbContext;
         public InterviewerAttributeRepository(UserDbContext userDbContext) :base(userDbContext)
         {
             _userDbContext = userDbContext;
         }
+
+
     }
 }

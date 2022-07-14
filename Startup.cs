@@ -1,6 +1,9 @@
 using BriefResume.DataBase;
+using BriefResume.IService;
 using BriefResume.JwtModel;
 using BriefResume.Models;
+using BriefResume.Service;
+using BriefResume.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,14 +34,33 @@ namespace BriefResume
         //For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
             //Dbcontext注入
             services.AddDbContext<UserDbContext>(opt =>
             {
                 opt.UseSqlServer(_confirguration["DbContext:ConnectionString"]);//得到的是string
             });
-            services.AddDataProtection();
 
+            //Jwt Authentic
+            services.AddOptions().Configure<JwtSettings>(_confirguration.GetSection("Jwt"));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    //var JwtSettings=_confirguration.GetSection("Jwt").Get<JwtSettings>();
+                    //_confirguration["Jwt:SecretKey"]就可以用JwtSettings.SecretKey代替
+                    var secretByte = Encoding.UTF8.GetBytes(_confirguration["Jwt:ScrKey"]);
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = _confirguration["Jwt:Issuer"],//也可以写成_confirguration
+                        ValidateAudience = true,
+                        ValidAudience = _confirguration["Jwt:Audience"],
+                        ValidateLifetime = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(secretByte)
+                    };
+                });
+
+
+            services.AddDataProtection();//密码加密服务
             services.AddIdentityCore<Seeker>(opt => //与AddIdentity不同,AddIdentity还会添加默认界面
             {
                 opt.Password.RequireDigit = false;
@@ -49,31 +71,16 @@ namespace BriefResume
                 //密码生成规则
                 opt.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultEmailProvider;//密码重置时,生成较为简单的密码
                 opt.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
-            })
-                .AddRoles<RoleExtension>()
-                .AddEntityFrameworkStores<UserDbContext>()
+            });
+
+            var idBuilder = new IdentityBuilder(typeof(Seeker), typeof(RoleExtension), services);
+            idBuilder.AddEntityFrameworkStores<UserDbContext>()
                 .AddDefaultTokenProviders()
-                .AddRoleManager<RoleManager<RoleExtension>>()//AddRoles包含了RoleManager
+                .AddRoleManager<RoleManager<RoleExtension>>()
                 .AddUserManager<UserManager<Seeker>>()
                 .AddSignInManager<SignInManager<Seeker>>();
 
-            //Jwt
-            services.AddOptions().Configure<JwtSettings>(_confirguration.GetSection("Jwt"));
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                //var JwtSettings=_confirguration.GetSection("Jwt").Get<JwtSettings>();
-                //_confirguration["Jwt:SecretKey"]就可以用JwtSettings.SecretKey代替
-                var secretByte = Encoding.UTF8.GetBytes(_confirguration["Jwt:ScrKey"]);
-                options.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    ValidateIssuer = true,
-                    ValidIssuer = _confirguration["Jwt:Issuer"],//也可以写成_confirguration
-                    ValidateAudience = true,
-                    ValidAudience = _confirguration["Jwt:Audience"],
-                    ValidateLifetime = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(secretByte)
-                };
-            });
+
 
             //MVC配置
             services.AddControllers(setupAction => {
@@ -104,6 +111,11 @@ namespace BriefResume
                     };
                 };
                 });
+
+            //仓储配置
+            services.AddTransient<IAblityRepository, AblityRepository>();
+            services.AddTransient<IInterviewerAttributeRepository, InterviewerAttributeRepository>();
+            services.AddTransient<IJobSeekerAttributeRepository, JobSeekerAttributeRepository>();
 
         }
 

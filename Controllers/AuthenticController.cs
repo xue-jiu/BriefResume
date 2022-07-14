@@ -20,13 +20,11 @@ namespace BriefResume.Controllers
     [ApiController]
     public class AuthenticController : ControllerBase
     {
-        private readonly SignInManager<Seeker> _seekerSignInManager;
         private readonly UserManager<Seeker> _seekerUserManager;
         private readonly IOptionsSnapshot<JwtSettings> _jwtSettings;
-        public AuthenticController(SignInManager<Seeker> myUsersignInManager, UserManager<Seeker> myUserUserManager, IOptionsSnapshot<JwtSettings> optionsSnapshot)
+        public AuthenticController( UserManager<Seeker> UserManager, IOptionsSnapshot<JwtSettings> optionsSnapshot)
         {
-            _seekerSignInManager = myUsersignInManager;
-            _seekerUserManager = myUserUserManager;
+            _seekerUserManager = UserManager;
             _jwtSettings = optionsSnapshot;
         }
 
@@ -34,23 +32,23 @@ namespace BriefResume.Controllers
         public async Task<IActionResult> UserLoginAsync([FromBody] SeekerLoginDto seeker)
         {
             // 1 验证用户名密码
-            var loginResult = await _seekerSignInManager.PasswordSignInAsync(seeker.Email, seeker.Password,false,false);
-            if (!loginResult.Succeeded)
+            var user = await _seekerUserManager.FindByEmailAsync(seeker.Email);//tracking
+            if (user == null)
+                return NotFound($"用户不存在");
+            if (await _seekerUserManager.IsLockedOutAsync(user))
+                return BadRequest("LockedOut");
+            var success = await _seekerUserManager.CheckPasswordAsync(user, seeker.Password);
+            if (!success)
             {
-                return BadRequest();
+                await _seekerUserManager.AccessFailedAsync(user);
             }
+            await _seekerUserManager.ResetAccessFailedCountAsync(user);
+
+
             // header
             var signingAlgorithm = SecurityAlgorithms.HmacSha256;
 
-            // payload
-            var user = await _seekerUserManager.FindByEmailAsync(seeker.Email);//tracking
-
-            //判断是否被锁定
-            if (!await _seekerSignInManager.CanSignInAsync(user))
-            {
-                return BadRequest("账户已被锁定,无法登录");
-
-            }
+            //payload
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier,user.Email)//将user的信息传出到Token
@@ -83,6 +81,13 @@ namespace BriefResume.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> UserRegisterAsync([FromBody] SeekerRegisterDto seekerRegisterDto) 
         {
+            //预防用户重复注册问题没有解决
+            //多方式登录问题没有解决
+            var SeekerFromRepo = _seekerUserManager.FindByEmailAsync(seekerRegisterDto.Email);
+            if (SeekerFromRepo!=null)
+            {
+                return BadRequest("用户名已注册");
+            }
             Seeker seeker = new Seeker()
             {
                 UserName = seekerRegisterDto.Email,

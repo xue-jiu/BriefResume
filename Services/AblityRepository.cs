@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Services
 {
-    public class AblityRepository : BaseService<Ablity>
+    public class AblityRepository : BaseService<Ablity>, IAblityRepository
     {
         private readonly UserDbContext _userDbContext;
         public AblityRepository(UserDbContext userDbContext) : base(userDbContext)

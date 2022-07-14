@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Services
 {
-    public class SeekerAttributeRepository : BaseService<SeekerAttribute>
+    public class JobSeekerAttributeRepository : BaseService<SeekerAttribute>, IJobSeekerAttributeRepository
     {
         private readonly UserDbContext _userDbContext;
-        public SeekerAttributeRepository(UserDbContext userDbContext) :base(userDbContext)
+        public JobSeekerAttributeRepository(UserDbContext userDbContext) :base(userDbContext)
         {
             _userDbContext = userDbContext;
         }
+
+
 
     }
 }
