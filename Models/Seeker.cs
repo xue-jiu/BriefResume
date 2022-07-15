@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Models
 {
-    public class Seeker : IdentityUser<string>
+    public class Seeker : IdentityUser
     {
         public string Preference { get; set; }
         public InterviewerAttribute InterviewerAttribute { get; set; }

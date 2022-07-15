@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Models
 {
-    public class RoleExtension : IdentityRole<string>
+    public class RoleExtension : IdentityRole
     {
     }
 }

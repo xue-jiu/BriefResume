@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Controllers
 {
-    [Route("api/seeker/{Email}/[controller]")]
+    [Route("api/seeker/{seelerId}/[controller]")]
     [ApiController]
     public class AblityController:ControllerBase
     {
@@ -26,15 +26,15 @@ namespace BriefResume.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAblityAsync(string Email)
+        public async Task<IActionResult> GetAblityAsync(string seelerId)
         {
-            var seekerFromRepo = await _userManager.FindByEmailAsync(Email);
+            var seekerFromRepo = await _userManager.FindByEmailAsync(seelerId);
             if (seekerFromRepo == null)
             {
                 return NotFound();
             }
             var SeekerId = await _userManager.GetUserIdAsync(seekerFromRepo);
-            var AblitiesFromRepo = ((AblityRepository)_ablityManager).Find(SeekerId);
+            var AblitiesFromRepo = ((AblityRepository)_ablityManager).Find(seelerId);
             if (AblitiesFromRepo==null)
             {
                 return NotFound();

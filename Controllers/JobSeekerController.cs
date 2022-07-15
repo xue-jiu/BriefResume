@@ -28,9 +28,9 @@ namespace BriefResume.Controllers
         //找出指定Jobseeker
         [HttpGet("{JobseekerEmail}", Name = nameof(GetJobseeker))]
         [Authorize]
-        public async Task<IActionResult> GetJobseeker([FromRoute] string JobseekerEmail, [FromQuery] string fields) 
+        public async Task<IActionResult> GetJobseeker([FromRoute] string seelerId, [FromQuery] string fields) 
         {
-            var JobseekerFormRepo = await _jobSeekerManager.FindByEmailAsync(JobseekerEmail);
+            var JobseekerFormRepo = await _jobSeekerManager.FindByIdAsync(seelerId);
             if (JobseekerFormRepo==null)
             {
                 return NotFound("没有找到该用户");
