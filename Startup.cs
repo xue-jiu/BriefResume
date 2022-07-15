@@ -80,8 +80,6 @@ namespace BriefResume
                 .AddUserManager<UserManager<Seeker>>()
                 .AddSignInManager<SignInManager<Seeker>>();
 
-
-
             //MVC配置
             services.AddControllers(setupAction => {
                 setupAction.ReturnHttpNotAcceptable = true;//若为false则忽略请求头accept指定的格式
@@ -117,6 +115,8 @@ namespace BriefResume
             services.AddTransient<IInterviewerAttributeRepository, InterviewerAttributeRepository>();
             services.AddTransient<IJobSeekerAttributeRepository, JobSeekerAttributeRepository>();
 
+            //automapper注入
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,8 @@
-﻿using BriefResume.Services;
+﻿using AutoMapper;
+using BriefResume.Dtos;
+using BriefResume.Models;
+using BriefResume.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,24 +11,36 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/seeker/{Email}/[controller]")]
     [ApiController]
     public class AblityController:ControllerBase
     {
         private readonly IAblityRepository _ablityManager;
-        public AblityController(IAblityRepository ablityRepository)
+        private readonly IMapper _mapper;
+        private readonly UserManager<Seeker> _userManager;
+        public AblityController(IAblityRepository ablityRepository, IMapper mapper, UserManager<Seeker> userManager)
         {
             _ablityManager = ablityRepository;
+            _mapper = mapper;
+            _userManager = userManager;
         }
 
-        [HttpGet("{JobseekerId}")]
-        public IActionResult JobseekerAblity(Guid JobseekerId)
+        [HttpGet]
+        public async Task<IActionResult> GetAblityAsync(string Email)
         {
-            var AblitiesFromRepo = ((AblityRepository)_ablityManager).Find(JobseekerId);
+            var seekerFromRepo = await _userManager.FindByEmailAsync(Email);
+            if (seekerFromRepo == null)
+            {
+                return NotFound();
+            }
+            var SeekerId = await _userManager.GetUserIdAsync(seekerFromRepo);
+            var AblitiesFromRepo = ((AblityRepository)_ablityManager).Find(SeekerId);
+            if (AblitiesFromRepo==null)
+            {
+                return NotFound();
+            }
             return Ok(AblitiesFromRepo);
         }
-
-
 
     }
 }

@@ -83,7 +83,7 @@ namespace BriefResume.Controllers
         {
             //预防用户重复注册问题没有解决
             //多方式登录问题没有解决
-            var SeekerFromRepo = _seekerUserManager.FindByEmailAsync(seekerRegisterDto.Email);
+            var SeekerFromRepo = await _seekerUserManager.FindByEmailAsync(seekerRegisterDto.Email);
             if (SeekerFromRepo!=null)
             {
                 return BadRequest("用户名已注册");

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BriefResume.DataBase
 {
-    public class UserDbContext : IdentityDbContext<Seeker, RoleExtension, Guid>
+    public class UserDbContext : IdentityDbContext<Seeker, RoleExtension, string>
     {
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {

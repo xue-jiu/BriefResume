@@ -34,6 +34,6 @@ namespace BriefResume.IService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        T Find(Guid id);
+        T Find(string id);
     }
 }

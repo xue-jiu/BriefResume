@@ -7,7 +7,7 @@ namespace BriefResume.Models
 {
     public class InterviewerAttribute
     {
-        public Guid InterviewerId { get; set; }
+        public string InterviewerId { get; set; }
         public Seeker seeker { get; set; }
         public string Company { get; set; }
         public int Remuneration { get; set; }

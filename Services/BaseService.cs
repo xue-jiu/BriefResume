@@ -46,7 +46,7 @@ namespace BriefResume.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public T Find(Guid id)
+        public T Find(string id)
         {
             T ObjectFromRepo = _userDbContext.Find<T>(id);
             var result = _userDbContext.SaveChanges();

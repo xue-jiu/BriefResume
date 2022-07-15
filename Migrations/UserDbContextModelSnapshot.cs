@@ -21,8 +21,8 @@ namespace BriefResume.Migrations
 
             modelBuilder.Entity("BriefResume.Models.Ablity", b =>
                 {
-                    b.Property<Guid>("JobSeekerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("JobSeekerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AblityContent")
                         .HasColumnType("nvarchar(max)");
@@ -37,8 +37,8 @@ namespace BriefResume.Migrations
 
             modelBuilder.Entity("BriefResume.Models.InterviewerAttribute", b =>
                 {
-                    b.Property<Guid>("InterviewerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("InterviewerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Company")
                         .HasColumnType("nvarchar(max)");
@@ -53,9 +53,8 @@ namespace BriefResume.Migrations
 
             modelBuilder.Entity("BriefResume.Models.RoleExtension", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -81,9 +80,8 @@ namespace BriefResume.Migrations
 
             modelBuilder.Entity("BriefResume.Models.Seeker", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -153,8 +151,8 @@ namespace BriefResume.Migrations
 
             modelBuilder.Entity("BriefResume.Models.SeekerAttribute", b =>
                 {
-                    b.Property<Guid>("JobSeekerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("JobSeekerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Colleage")
                         .HasColumnType("nvarchar(max)");
@@ -170,7 +168,7 @@ namespace BriefResume.Migrations
                     b.ToTable("seekerAttributes");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -183,8 +181,9 @@ namespace BriefResume.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -193,7 +192,7 @@ namespace BriefResume.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -206,8 +205,9 @@ namespace BriefResume.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -216,7 +216,7 @@ namespace BriefResume.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -227,8 +227,9 @@ namespace BriefResume.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -237,13 +238,13 @@ namespace BriefResume.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -252,10 +253,10 @@ namespace BriefResume.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -304,7 +305,7 @@ namespace BriefResume.Migrations
                     b.Navigation("seeker");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("BriefResume.Models.RoleExtension", null)
                         .WithMany()
@@ -313,7 +314,7 @@ namespace BriefResume.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.HasOne("BriefResume.Models.Seeker", null)
                         .WithMany()
@@ -322,7 +323,7 @@ namespace BriefResume.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.HasOne("BriefResume.Models.Seeker", null)
                         .WithMany()
@@ -331,7 +332,7 @@ namespace BriefResume.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.HasOne("BriefResume.Models.RoleExtension", null)
                         .WithMany()
@@ -346,7 +347,7 @@ namespace BriefResume.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.HasOne("BriefResume.Models.Seeker", null)
                         .WithMany()

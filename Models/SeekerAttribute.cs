@@ -7,7 +7,7 @@ namespace BriefResume.Models
 {
     public class SeekerAttribute
     {
-        public Guid JobSeekerId { get; set; }
+        public string JobSeekerId { get; set; }
         public Seeker seeker { get; set; }
         public int ExpadSalary { get; set; }
         public string Colleage { get; set; }
