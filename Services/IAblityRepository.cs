@@ -9,5 +9,6 @@ namespace BriefResume.Services
 {
     public interface IAblityRepository
     {
+        Task<IEnumerable<Ablity>> GetAbilitiesAsync(string seekerId);
     }
 }

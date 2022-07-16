@@ -8,7 +8,7 @@ namespace BriefResume.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InterviewerAttributeController : ControllerBase
+    public class InterviewerController : ControllerBase
     {
 
     }

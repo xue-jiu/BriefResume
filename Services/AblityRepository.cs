@@ -1,6 +1,7 @@
 ﻿using BriefResume.DataBase;
 using BriefResume.Models;
 using BriefResume.Service;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,11 @@ namespace BriefResume.Services
         {
             _userDbContext = userDbContext;
         }
-        
 
+        public async Task<IEnumerable<Ablity>> GetAbilitiesAsync(string seekerId)
+        {
+            return await _userDbContext.ablities.Where(c => c.SeekerAttribute.JobSeekerId == seekerId).ToListAsync();
+        }
 
 
     }

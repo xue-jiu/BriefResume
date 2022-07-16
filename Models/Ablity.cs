@@ -7,8 +7,11 @@ namespace BriefResume.Models
 {
     public class Ablity
     {
-        public string JobSeekerId { get; set; }
+        public Guid AblityId { get; set; }
+
+        public Guid SeekerAttributeId { get; set; }
         public SeekerAttribute SeekerAttribute { get; set; }
+
         public string AblityKey { get; set; }
         public string AblityContent { get; set; }
     }

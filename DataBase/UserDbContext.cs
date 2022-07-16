@@ -18,6 +18,7 @@ namespace BriefResume.DataBase
         public DbSet<Ablity> ablities { get; set; }
         public DbSet<InterviewerAttribute> interviewerAttributes { get; set; }
 
+        //此处配置有问题,并非是一对一关系,而是单向关系,切记要改
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -27,8 +28,8 @@ namespace BriefResume.DataBase
                 .HasOne<SeekerAttribute>(c => c.SeekerAttribute)
                 .WithMany(c => c.Ablities)
                 .IsRequired()
-                .HasForeignKey(c => c.JobSeekerId);
-            builder.Entity<Ablity>().HasKey(c => c.JobSeekerId);
+                .HasForeignKey(c => c.SeekerAttributeId);
+            builder.Entity<Ablity>().HasKey(c => c.AblityId);
 
             //seekerAttributes 与Seeker 一对一
             builder.Entity<Seeker>()
@@ -42,8 +43,8 @@ namespace BriefResume.DataBase
                 .WithOne(c => c.seeker)
                 .HasForeignKey<InterviewerAttribute>(c=>c.InterviewerId);
 
-            builder.Entity<InterviewerAttribute>().HasKey(c=>c.InterviewerId);
-            builder.Entity<SeekerAttribute>().HasKey(c => c.JobSeekerId);
+            builder.Entity<InterviewerAttribute>().HasKey(c=>c.InterviewerAttributeId);
+            builder.Entity<SeekerAttribute>().HasKey(c => c.SeekerAttributeId);
 
         }
 

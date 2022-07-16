@@ -28,19 +28,19 @@ namespace BriefResume.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAblityAsync(string seelerId)
         {
-            var seekerFromRepo = await _userManager.FindByEmailAsync(seelerId);
+            var seekerFromRepo = await _userManager.FindByIdAsync(seelerId);
             if (seekerFromRepo == null)
             {
-                return NotFound();
+                return NotFound("没有对应的人");
             }
-            var SeekerId = await _userManager.GetUserIdAsync(seekerFromRepo);
-            var AblitiesFromRepo = ((AblityRepository)_ablityManager).Find(seelerId);
+            var AblitiesFromRepo = await _ablityManager.GetAbilitiesAsync(seelerId);
             if (AblitiesFromRepo==null)
             {
-                return NotFound();
+                return NotFound("这个人一点用都没有");
             }
             return Ok(AblitiesFromRepo);
         }
+
 
     }
 }
