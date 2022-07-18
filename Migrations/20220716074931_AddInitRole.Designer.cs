@@ -4,14 +4,16 @@ using BriefResume.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BriefResume.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220716074931_AddInitRole")]
+    partial class AddInitRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,7 +97,7 @@ namespace BriefResume.Migrations
                         new
                         {
                             Id = "308660dc-ae51-480f-824d-7dca6714c3e2",
-                            ConcurrencyStamp = "c78c4e8a-17bc-4aec-a5ca-d721e79c7b6b",
+                            ConcurrencyStamp = "73f3fc45-8d4a-4dd9-90c9-3e780d311136",
                             Name = "superMoster",
                             NormalizedName = "SUPERMOSTER"
                         });
@@ -176,17 +178,17 @@ namespace BriefResume.Migrations
                         {
                             Id = "90184155-dee0-40c9-bb1e-b5ed07afc04e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4822ef37-184b-4c51-82c4-1ef53fb0fe32",
+                            ConcurrencyStamp = "8661eda6-c31b-40b1-89c1-374908efe8bf",
                             CreateDatetime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "adminNanaliz@qq.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINNANALIZ@QQ.COM",
                             NormalizedUserName = "ADMINNANALIZ@QQ.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKOi9bLGkCdrek0oQJU/qOLXxQju+ujYQR98AkbGk0gqH8gEiA+KG5zc0Wx9A+HqQQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH0bSUqT34Zmf+JYqpU+ffTcgJ1P9q+wozEWN82W3YAJ3ogDEEiLIlwd7pmuFBHr7Q==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "243336cf-0bac-4710-800a-43ffef8cf63c",
+                            SecurityStamp = "d2f276e4-1be4-453c-b384-fa3b292bbeff",
                             TwoFactorEnabled = false,
                             UserName = "adminNanaliz@qq.com"
                         });

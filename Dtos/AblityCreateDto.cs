@@ -7,5 +7,7 @@ namespace BriefResume.Dtos
 {
     public class AblityCreateDto
     {
+        public string AblityKey { get; set; }
+        public string AblityContent { get; set; }
     }
 }

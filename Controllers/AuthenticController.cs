@@ -1,6 +1,7 @@
 ﻿using BriefResume.Dtos;
 using BriefResume.JwtModel;
 using BriefResume.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +22,12 @@ namespace BriefResume.Controllers
     public class AuthenticController : ControllerBase
     {
         private readonly UserManager<Seeker> _seekerUserManager;
+        private readonly RoleManager<RoleExtension> _seekerRoleManager;
         private readonly IOptionsSnapshot<JwtSettings> _jwtSettings;
-        public AuthenticController( UserManager<Seeker> UserManager, IOptionsSnapshot<JwtSettings> optionsSnapshot)
+        public AuthenticController( UserManager<Seeker> UserManager, IOptionsSnapshot<JwtSettings> optionsSnapshot, RoleManager<RoleExtension>  roleManager)
         {
             _seekerUserManager = UserManager;
+            _seekerRoleManager = roleManager;
             _jwtSettings = optionsSnapshot;
         }
 
@@ -100,6 +103,29 @@ namespace BriefResume.Controllers
             }
             return Ok();
         }
+
+        [HttpGet("AddRole")]
+        [Authorize(Roles = "superMoster")]
+        public async Task<IActionResult> AddRoleIdentity([FromQuery]string role, [FromQuery] string seekerId)
+        {
+            if (!Enum.IsDefined(typeof(RoleKey), role))
+            {
+                return NotFound("该身份不存在");
+
+            }
+            var seekerFromRepo = await _seekerUserManager.FindByIdAsync(seekerId);
+            if (seekerFromRepo == null)
+            {
+                return NotFound("没有找到该用户");
+            }
+            var result = await _seekerUserManager.AddToRoleAsync(seekerFromRepo, role);
+            if (!result.Succeeded)
+            {
+                return BadRequest("授权失败");
+            }
+            return Ok("授权成功");
+        }
+
 
         [HttpGet]
         public IActionResult TryController()
