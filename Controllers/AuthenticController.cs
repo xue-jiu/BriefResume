@@ -101,24 +101,51 @@ namespace BriefResume.Controllers
             {
                 return BadRequest();
             }
+            //await _seekerUserManager.AddToRoleAsync(seeker, RoleKey.customer.ToString());
             return Ok();
         }
 
-        [HttpGet("AddRole")]
+        [HttpGet("AddRoleName")]
+        [Authorize(Roles = "superMoster")]
+        public async Task<IActionResult> AddRoleName([FromQuery] string role)
+        {
+            if (!Enum.IsDefined(typeof(RoleKey), role))
+            {
+                return NotFound("该身份不存在");
+            }
+            RoleExtension newRole = new RoleExtension()
+            {
+                Name = role.ToString(),
+                NormalizedName = role.ToString().ToUpper()
+            };
+            var result = await _seekerRoleManager.CreateAsync(newRole);
+            if (result.Succeeded!=true)
+            {
+                return BadRequest("创建角色失败");
+            }
+            return Ok("角色创建成功");
+        }
+
+        [HttpGet("AddRoleManager")]
+       // [Authorize(AuthenticationSchemes = "Bearer")]
         [Authorize(Roles = "superMoster")]
         public async Task<IActionResult> AddRoleIdentity([FromQuery]string role, [FromQuery] string seekerId)
         {
             if (!Enum.IsDefined(typeof(RoleKey), role))
             {
                 return NotFound("该身份不存在");
-
             }
             var seekerFromRepo = await _seekerUserManager.FindByIdAsync(seekerId);
             if (seekerFromRepo == null)
             {
                 return NotFound("没有找到该用户");
             }
-            var result = await _seekerUserManager.AddToRoleAsync(seekerFromRepo, role);
+            if (await _seekerUserManager.IsInRoleAsync(seekerFromRepo, role))
+            {
+                return BadRequest($"该用户已经是{role}");
+            }
+
+            var result = await _seekerUserManager.AddToRoleAsync(seekerFromRepo, role);//这句好像没追踪
             if (!result.Succeeded)
             {
                 return BadRequest("授权失败");
@@ -127,10 +154,14 @@ namespace BriefResume.Controllers
         }
 
 
+
+
+
         [HttpGet]
+        [Authorize(Roles = "superMoster")]
         public IActionResult TryController()
         {
-            return Ok("试验成功");
+            return Ok("是superMoster");
         }
 
     }

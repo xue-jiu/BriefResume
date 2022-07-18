@@ -32,6 +32,7 @@ namespace BriefResume.Controllers
         //查出所有jobseeker
         //此方法不全
         [HttpGet]
+        [Authorize(Roles = "manager")]
         public IActionResult GetJobSeekers()
         {
             var Users = _jobSeekerManager.Users.ToList();
@@ -40,7 +41,7 @@ namespace BriefResume.Controllers
 
         //找出指定Jobseeker
         [HttpGet("{seekerId}", Name = nameof(GetJobseeker))]
-        [Authorize]
+        [Authorize(Roles = "manager")]
         public async Task<IActionResult> GetJobseeker([FromRoute] string seekerId) 
         {
             var JobseekerFormRepo = await _jobSeekerManager.FindByIdAsync(seekerId);
