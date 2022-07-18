@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.JsonPatch;
 using System.Threading.Tasks;
 
 namespace BriefResume.Controllers
@@ -31,6 +32,7 @@ namespace BriefResume.Controllers
 
         //查出所有jobseeker
         //此方法不全
+        //创建一个字典,把seeker和jA他tribute的信息都传递进去
         [HttpGet]
         [Authorize(Roles = "manager")]
         public IActionResult GetJobSeekers()
@@ -76,15 +78,22 @@ namespace BriefResume.Controllers
         }
 
         //因为特征删除一般都是软删除,所以这里delete方法就没写,只写更新操作
-        //更新操作 没有选择用put 直接用patch
-        [HttpPatch]
-        public async Task<IActionResult> UpdateJobSeekerAttribute([FromBody] SeekerAttributeCreateDto seekerCreateAttribute, string seekerId)
+        //更新操作 如果要用patch需要重写usermanager,不太方便
+        [HttpPut("{seekerId}")]
+        [Authorize]
+        public async Task<IActionResult> PartiallyUpdateJobSeekerAttribute(
+            [FromRoute]string seekerId,
+            [FromBody] SeekerUpdateDto seekerUpdateDto)
         {
-            return Ok();
+            var JobseekerFormRepo = await _jobSeekerManager.FindByIdAsync(seekerId);
+            if (JobseekerFormRepo == null)
+            {
+                return NotFound("没有找到该用户");
+            }
+            var UpdateDto =  _mapper.Map<Seeker>(seekerUpdateDto);
+            await _jobSeekerManager.UpdateAsync(UpdateDto);
+            return NoContent();
         }
 
-
-
-
-        }
+     }
 }

@@ -2,11 +2,14 @@
 using BriefResume.Dtos;
 using BriefResume.Models;
 using BriefResume.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.JsonPatch.Adapters;
 using System.Threading.Tasks;
 
 namespace BriefResume.Controllers
@@ -26,7 +29,7 @@ namespace BriefResume.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAblityAsync(string seelerId)
+        public async Task<IActionResult> GetAblityAsync([FromRoute]string seelerId)
         {
             var seekerFromRepo = await _userManager.FindByIdAsync(seelerId);
             if (seekerFromRepo == null)
@@ -40,6 +43,60 @@ namespace BriefResume.Controllers
             }
             return Ok(AblitiesFromRepo);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddAblityAsync([FromRoute] string seelerId,[FromBody] AblityCreateDto ablityCreateDto )
+        {
+            var seekerFromRepo = await _userManager.FindByIdAsync(seelerId);
+            if (seekerFromRepo == null)
+            {
+                return NotFound("没有对应的人");
+            }
+            var AbilityFromPage =  _mapper.Map<Ablity>(ablityCreateDto);
+            var result = ((AblityRepository)_ablityManager).Create(AbilityFromPage);
+            if (result==false)
+            {
+                return BadRequest("能力创建失败");
+            }
+            return Ok("创建成功");
+        }
+
+        [HttpPatch("ablityId")]
+        public async Task<IActionResult> PartiallyUpdateAblityAsync([FromBody]JsonPatchDocument<AblityUpdateDto> patchDocument,[FromRoute]string ablityId)
+        {
+            Ablity ablityFromRepo = ((AblityRepository)_ablityManager).Find(ablityId);
+            if (ablityFromRepo == null)
+            {
+                return BadRequest("该能力不存在");
+            }
+            var ablityToPatch = _mapper.Map<AblityUpdateDto>(ablityFromRepo);
+            patchDocument.ApplyTo(ablityToPatch);//此处有bug
+            if (!TryValidateModel(patchDocument))
+            {
+                return ValidationProblem(ModelState);
+            }
+            _mapper.Map(ablityToPatch, ablityFromRepo);
+            await ((AblityRepository)_ablityManager).SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpDelete("ablityId")]
+        public IActionResult DeleteAblity([FromRoute] string ablityId)
+        {
+            Ablity ablityFromRepo = ((AblityRepository)_ablityManager).Find(ablityId);
+            if (ablityFromRepo == null)
+            {
+                return BadRequest("该能力不存在");
+            }
+            var result = ((AblityRepository)_ablityManager).Delete(ablityFromRepo);
+            if (!result)
+            {
+                return BadRequest("删除失败");
+            }
+            return Ok("成功");
+        }
+
+
 
 
     }

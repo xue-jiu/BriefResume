@@ -22,6 +22,19 @@ namespace BriefResume.Services
             return await _userDbContext.ablities.Where(c => c.SeekerAttribute.JobSeekerId == seekerId).ToListAsync();
         }
 
+        public async Task CreateAblitities(Ablity ablity)
+        {
+            await _userDbContext.ablities.AddAsync(ablity);
+        }
 
+        public Task<Ablity> GetAblityAsync(Guid ablityId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await _userDbContext.SaveChangesAsync() >= 0);
+        }
     }
 }
