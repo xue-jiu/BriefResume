@@ -34,7 +34,9 @@ namespace BriefResume.Services
             return (await _userDbContext.SaveChangesAsync() >= 0);
         }
 
-
-
+        public async Task<IEnumerable<SeekerAttribute>> GetSeekerAttributes()
+        {
+            return await _userDbContext.seekerAttributes.ToListAsync();
+        }
     }
 }

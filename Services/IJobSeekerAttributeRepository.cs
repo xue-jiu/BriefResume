@@ -11,7 +11,7 @@ namespace BriefResume.Services
         Task<SeekerAttribute> GetSeekerAttributeBySeekerIdAsync(string seekerId);
         Task CreateSeekerAttributeAsync(SeekerAttribute seekerAttribute, string seekerId);
         Task<bool> SaveChangesAsync();
-
+        Task<IEnumerable<SeekerAttribute>> GetSeekerAttributes();
 
     }
 }

@@ -13,6 +13,8 @@ namespace BriefResume.Profiles
         public AblityFile()
         {
             CreateMap<AblityCreateDto, Ablity>();
+            CreateMap<Ablity, AblityUpdateDto>();
+
         }
     }
 }

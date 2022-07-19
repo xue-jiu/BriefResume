@@ -22,7 +22,6 @@ namespace BriefResume.Helper
             TotalPage = (int)Math.Ceiling(count / (double)pageSize);
             AddRange(items);
         }
-        //下方代码实属惊艳到我,以后也要好好学设计模式,聪聪!
 
         public static async Task<PagedList<T>> CreateAsync(IQueryable<T> result,int currentPage,int pageSize)//工厂模式
         {
