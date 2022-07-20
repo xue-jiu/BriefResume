@@ -14,14 +14,15 @@ using System.Threading.Tasks;
 
 namespace BriefResume.Controllers
 {
-    [Route("api/seeker/{seelerId}/[controller]")]
+    [Route("api/seeker/{seekerId}/[controller]")]
     [ApiController]
     public class AblityController:ControllerBase
     {
+        private readonly SeekerManager _userManager;
         private readonly IAblityRepository _ablityManager;
         private readonly IMapper _mapper;
-        private readonly UserManager<Seeker> _userManager;
-        public AblityController(IAblityRepository ablityRepository, IMapper mapper, UserManager<Seeker> userManager)
+
+        public AblityController(IAblityRepository ablityRepository, IMapper mapper, SeekerManager userManager)
         {
             _ablityManager = ablityRepository;
             _mapper = mapper;
@@ -29,14 +30,14 @@ namespace BriefResume.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAblityAsync([FromRoute]string seelerId)
+        public async Task<IActionResult> GetAblityAsync([FromRoute]string seekerId)
         {
-            var seekerFromRepo = await _userManager.FindByIdAsync(seelerId);
+            var seekerFromRepo = await _userManager.FindByIdAsync(seekerId);
             if (seekerFromRepo == null)
             {
                 return NotFound("没有对应的人");
             }
-            var AblitiesFromRepo = await _ablityManager.GetAbilitiesAsync(seelerId);
+            var AblitiesFromRepo = await _ablityManager.GetAbilitiesAsync(seekerId);
             if (AblitiesFromRepo==null)
             {
                 return NotFound("这个人一点用都没有");
@@ -45,14 +46,20 @@ namespace BriefResume.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAblityAsync([FromRoute] string seelerId,[FromBody] AblityCreateDto ablityCreateDto )
+        public async Task<IActionResult> AddAblityAsync([FromRoute] string seekerId,[FromBody] AblityCreateDto ablityCreateDto )
         {
-            var seekerFromRepo = await _userManager.FindByIdAsync(seelerId);
+            var seekerFromRepo = await _userManager.FindByIdAsync(seekerId);
             if (seekerFromRepo == null)
             {
                 return NotFound("没有对应的人");
             }
             var AbilityFromPage =  _mapper.Map<Ablity>(ablityCreateDto);
+            var JobseekerAttributeId = await _userManager.FindJobseekerIdAttributeAsync(seekerId);
+            if (JobseekerAttributeId==Guid.Empty)
+            {
+                return BadRequest("该用户没有成功创建账户");
+            }
+            AbilityFromPage.SeekerAttributeId = JobseekerAttributeId;
             var result = ((AblityRepository)_ablityManager).Create(AbilityFromPage);
             if (result==false)
             {
@@ -95,9 +102,6 @@ namespace BriefResume.Controllers
             }
             return Ok("成功");
         }
-
-
-
 
     }
 }

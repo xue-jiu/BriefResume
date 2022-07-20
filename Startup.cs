@@ -71,13 +71,15 @@ namespace BriefResume
                 //密码生成规则
                 opt.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultEmailProvider;//密码重置时,生成较为简单的密码
                 opt.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
+                //用户名规则
+                //opt.User.AllowedUserNameCharacters 这里可以用正则表达式设置规则
             });
 
             var idBuilder = new IdentityBuilder(typeof(Seeker), typeof(RoleExtension), services);
             idBuilder.AddEntityFrameworkStores<UserDbContext>()
                 .AddDefaultTokenProviders()
                 .AddRoleManager<RoleManager<RoleExtension>>()
-                .AddUserManager<UserManager<Seeker>>()
+                .AddUserManager<SeekerManager>()
                 .AddSignInManager<SignInManager<Seeker>>();
 
             //MVC配置

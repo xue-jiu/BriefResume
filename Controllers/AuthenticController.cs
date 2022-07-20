@@ -1,6 +1,7 @@
 ﻿using BriefResume.Dtos;
 using BriefResume.JwtModel;
 using BriefResume.Models;
+using BriefResume.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -21,10 +22,10 @@ namespace BriefResume.Controllers
     [ApiController]
     public class AuthenticController : ControllerBase
     {
-        private readonly UserManager<Seeker> _seekerUserManager;
+        private readonly SeekerManager _seekerUserManager;
         private readonly RoleManager<RoleExtension> _seekerRoleManager;
         private readonly IOptionsSnapshot<JwtSettings> _jwtSettings;
-        public AuthenticController( UserManager<Seeker> UserManager, IOptionsSnapshot<JwtSettings> optionsSnapshot, RoleManager<RoleExtension>  roleManager)
+        public AuthenticController(SeekerManager UserManager, IOptionsSnapshot<JwtSettings> optionsSnapshot, RoleManager<RoleExtension>  roleManager)
         {
             _seekerUserManager = UserManager;
             _seekerRoleManager = roleManager;

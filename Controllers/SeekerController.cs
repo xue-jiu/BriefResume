@@ -18,11 +18,11 @@ namespace BriefResume.Controllers
     [ApiController]
     public class SeekerController : ControllerBase
     {
-        private readonly UserManager<Seeker> _jobSeekerManager;
+        private readonly SeekerManager _jobSeekerManager;
         private readonly IAblityRepository _ablityManager;
         private readonly IJobSeekerAttributeRepository _seekerAttributeManager;
         private readonly IMapper _mapper;
-        public SeekerController(UserManager<Seeker> userManager, IAblityRepository ablityManager, IJobSeekerAttributeRepository seekerAttributeManager, IMapper mapper)
+        public SeekerController(SeekerManager userManager, IAblityRepository ablityManager, IJobSeekerAttributeRepository seekerAttributeManager, IMapper mapper)
         {
             _jobSeekerManager = userManager;
             _ablityManager = ablityManager;
@@ -34,6 +34,7 @@ namespace BriefResume.Controllers
         //此方法不全
         //创建一个字典,把seeker和jA他tribute的信息都传递进去
         [HttpGet]
+        [Authorize(Roles = "manager")]
         public IActionResult GetJobSeekers()
         {
             var Users = _jobSeekerManager.Users.ToList();
@@ -42,7 +43,7 @@ namespace BriefResume.Controllers
 
         //找出指定Jobseeker
         [HttpGet("{seekerId}", Name = nameof(GetJobseeker))]
-        [Authorize(Roles = "manager")]
+        [Authorize]
         public async Task<IActionResult> GetJobseeker([FromRoute] string seekerId) 
         {
             var JobseekerFormRepo = await _jobSeekerManager.FindByIdAsync(seekerId);
@@ -56,8 +57,8 @@ namespace BriefResume.Controllers
         //因为特征删除一般都是软删除,所以这里delete方法就没写,只写更新操作
         //更新操作 如果要用patch需要重写usermanager,不太方便
         [HttpPut("{seekerId}")]
-        [Authorize(Roles = "manager")]
-        public async Task<IActionResult> UpdateJobSeeker(
+        [Authorize]
+        public async Task<IActionResult> UpdateSeeker(
             [FromRoute]string seekerId,
             [FromBody] SeekerUpdateDto seekerUpdateDto)
         {
@@ -66,10 +67,16 @@ namespace BriefResume.Controllers
             {
                 return NotFound("没有找到该用户");
             }
-            var UpdateDto =  _mapper.Map<Seeker>(seekerUpdateDto);
-            await _jobSeekerManager.UpdateAsync(UpdateDto);
+            //var UpdateDto =  _mapper.Map<Seeker>(seekerUpdateDto);
+            _mapper.Map(seekerUpdateDto,JobseekerFormRepo);
+            var result = await _jobSeekerManager.UpdateAsync(JobseekerFormRepo);
+            if (!result.Succeeded)
+            {
+                return BadRequest("更新失败");
+            }
             return NoContent();
         }
+
 
      }
 }

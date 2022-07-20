@@ -7,6 +7,7 @@ namespace BriefResume.Dtos
 {
     public class AblityUpdateDto
     {
-
+        public string AblityKey { get; set; }
+        public string AblityContent { get; set; }
     }
 }

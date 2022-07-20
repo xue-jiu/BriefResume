@@ -17,22 +17,27 @@ namespace BriefResume.Controllers
     [ApiController]
     public class JobSeekerController:ControllerBase
     {
-        private readonly UserManager<Seeker> _jobSeekerManager;
+        private readonly SeekerManager _jobSeekerManager;
         private readonly IAblityRepository _ablityManager;
         private readonly IJobSeekerAttributeRepository _seekerAttributeManager;
         private readonly IMapper _mapper;
-        public JobSeekerController()
+        public JobSeekerController
+            (IAblityRepository ablityRepository, 
+            IJobSeekerAttributeRepository jobSeekerAttributeRepository, 
+            IMapper mapper,
+            SeekerManager userManager)
         {
-            
+            _ablityManager = ablityRepository;
+            _seekerAttributeManager = jobSeekerAttributeRepository;
+            _mapper = mapper;
+            _jobSeekerManager = userManager;
         }
-        [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> GetJobSeekerAttributes([FromQuery] JobSeekerParameter jobSeekerParameter)
-        {
-           var AttributesFromRepo = await  _seekerAttributeManager.GetSeekerAttributes();
-
-        }
-
+        //[HttpGet]
+        //[Authorize]
+        //public async Task<IActionResult> GetJobSeekerAttributes([FromQuery] JobSeekerParameter jobSeekerParameter)
+        //{
+        //   var AttributesFromRepo = await  _seekerAttributeManager.GetSeekerAttributes();
+        //}
 
         [HttpPost("{seekerId}")]
         [Authorize]
