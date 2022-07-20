@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,11 +87,11 @@ namespace BriefResume
             services.AddControllers(setupAction => {
                 setupAction.ReturnHttpNotAcceptable = true;//若为false则忽略请求头accept指定的格式
             })
-                //.AddNewtonsoftJson(setupAction =>
-                //{ //若与下方xml写反，则当patch时会先默认使用xml
-                //    setupAction.SerializerSettings.ContractResolver =
-                //            new CamelCasePropertyNamesContractResolver();//注册解析jsondocument
-                //})
+                .AddNewtonsoftJson(setupAction =>
+                { //若与下方xml写反，则当patch时会先默认使用xml
+                    setupAction.SerializerSettings.ContractResolver =
+                            new CamelCasePropertyNamesContractResolver();//注册解析jsondocument
+                })
                 .AddXmlDataContractSerializerFormatters()//内容协商,可以使用Xml输出数据
                 .ConfigureApiBehaviorOptions(setupAction =>
                 {

@@ -14,7 +14,7 @@ namespace BriefResume.Profiles
         {
             CreateMap<AblityCreateDto, Ablity>();
             CreateMap<Ablity, AblityUpdateDto>();
-
+            CreateMap<AblityUpdateDto, Ablity>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BriefResume.DataBase;
 using BriefResume.IService;
 using BriefResume.Models;
+using BriefResume.Parameters;
 using BriefResume.Service;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -34,9 +35,21 @@ namespace BriefResume.Services
             return (await _userDbContext.SaveChangesAsync() >= 0);
         }
 
-        public async Task<IEnumerable<SeekerAttribute>> GetSeekerAttributes()
+        public async Task<IEnumerable<SeekerAttribute>> GetSeekerAttributes(JobSeekerParameter jobSeekerParameter)
         {
-            return await _userDbContext.seekerAttributes.ToListAsync();
+            IQueryable<SeekerAttribute> IQuaryResult = _userDbContext.seekerAttributes;
+            if (jobSeekerParameter==null)
+            {
+                return await IQuaryResult.ToListAsync();
+            }
+            if (!string.IsNullOrWhiteSpace(jobSeekerParameter.Colleage))
+            {
+                var CollageContain = jobSeekerParameter.Colleage.Trim();
+                IQuaryResult = IQuaryResult.Where(t => t.Colleage.Contains(CollageContain));
+            }
+            return await IQuaryResult.ToListAsync();
+
+
         }
     }
 }

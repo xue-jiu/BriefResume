@@ -32,12 +32,19 @@ namespace BriefResume.Controllers
             _mapper = mapper;
             _jobSeekerManager = userManager;
         }
-        //[HttpGet]
-        //[Authorize]
-        //public async Task<IActionResult> GetJobSeekerAttributes([FromQuery] JobSeekerParameter jobSeekerParameter)
-        //{
-        //   var AttributesFromRepo = await  _seekerAttributeManager.GetSeekerAttributes();
-        //}
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetJobSeekerAttributes([FromQuery] JobSeekerParameter jobSeekerParameter)
+        {
+            //关键字查询
+            var AttributesFromRepo = await _seekerAttributeManager.GetSeekerAttributes(jobSeekerParameter);
+
+
+
+
+
+        }
 
         [HttpPost("{seekerId}")]
         [Authorize]
@@ -61,5 +68,11 @@ namespace BriefResume.Controllers
             }
             return BadRequest("创建失败");
         }
+
+
+
+
+
+
     }
 }

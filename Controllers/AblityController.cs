@@ -68,16 +68,20 @@ namespace BriefResume.Controllers
             return Ok("创建成功");
         }
 
-        [HttpPatch("ablityId")]
-        public async Task<IActionResult> PartiallyUpdateAblityAsync([FromBody]JsonPatchDocument<AblityUpdateDto> patchDocument,[FromRoute]string ablityId)
-        {
-            Ablity ablityFromRepo = ((AblityRepository)_ablityManager).Find(ablityId);
+        [HttpPatch("{ablityId}")]
+        public async Task<IActionResult> PartiallyUpdateAblityAsync(
+            [FromRoute] string ablityId,
+            [FromBody]JsonPatchDocument<AblityUpdateDto> patchDocument) 
+        { 
+
+            Ablity ablityFromRepo = ((AblityRepository)_ablityManager).Find(ablityId);//此处有bug
+
             if (ablityFromRepo == null)
             {
                 return BadRequest("该能力不存在");
             }
             var ablityToPatch = _mapper.Map<AblityUpdateDto>(ablityFromRepo);
-            patchDocument.ApplyTo(ablityToPatch);//此处有bug
+            patchDocument.ApplyTo(ablityToPatch);
             if (!TryValidateModel(patchDocument))
             {
                 return ValidationProblem(ModelState);
@@ -87,7 +91,7 @@ namespace BriefResume.Controllers
             return NoContent();
         }
 
-        [HttpDelete("ablityId")]
+        [HttpDelete("{ablityId}")]
         public IActionResult DeleteAblity([FromRoute] string ablityId)
         {
             Ablity ablityFromRepo = ((AblityRepository)_ablityManager).Find(ablityId);
@@ -100,7 +104,13 @@ namespace BriefResume.Controllers
             {
                 return BadRequest("删除失败");
             }
-            return Ok("成功");
+            return Ok("删除成功");
+        }
+
+        [HttpGet("{ablityId}")]
+        public IActionResult TryController([FromRoute] string ablityId)
+        {
+            return Ok(ablityId);
         }
 
     }

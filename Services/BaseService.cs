@@ -48,7 +48,8 @@ namespace BriefResume.Service
         /// <returns></returns>
         public T Find(string id)
         {
-            T ObjectFromRepo = _userDbContext.Find<T>(id);
+            var IdOfGuid = new Guid(id);
+            T ObjectFromRepo = _userDbContext.Find<T>(IdOfGuid);
             var result = _userDbContext.SaveChanges();
             return ObjectFromRepo;
         }
