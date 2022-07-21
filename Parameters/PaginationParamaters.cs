@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BriefResume.ResourceParameters
 {
-    public class PaginationResourceParamaters
+    public class PaginationParamaters
     {
         private int _pageNumber = 1;
         public int PageNumber

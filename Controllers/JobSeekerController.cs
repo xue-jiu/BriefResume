@@ -2,6 +2,7 @@
 using BriefResume.Dtos;
 using BriefResume.Models;
 using BriefResume.Parameters;
+using BriefResume.ResourceParameters;
 using BriefResume.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -35,16 +36,16 @@ namespace BriefResume.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetJobSeekerAttributes([FromQuery] JobSeekerParameter jobSeekerParameter)
+        public async Task<IActionResult> GetJobSeekerAttributes([FromQuery] JobSeekerParameter jobSeekerParameter,[FromQuery] PaginationParamaters paginationParamaters )
         {
-            //关键字查询
-            var AttributesFromRepo = await _seekerAttributeManager.GetSeekerAttributes(jobSeekerParameter);
-
+            //关键字查询,分页,排序
+            var AttributesFromRepo = await _seekerAttributeManager.GetSeekerAttributes(jobSeekerParameter, paginationParamaters);
 
 
 
 
         }
+
 
         [HttpPost("{seekerId}")]
         [Authorize]
@@ -68,11 +69,6 @@ namespace BriefResume.Controllers
             }
             return BadRequest("创建失败");
         }
-
-
-
-
-
 
     }
 }

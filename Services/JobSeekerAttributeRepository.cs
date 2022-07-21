@@ -1,7 +1,10 @@
 ﻿using BriefResume.DataBase;
+using BriefResume.Dtos;
+using BriefResume.Helper;
 using BriefResume.IService;
 using BriefResume.Models;
 using BriefResume.Parameters;
+using BriefResume.ResourceParameters;
 using BriefResume.Service;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,9 +17,11 @@ namespace BriefResume.Services
     public class JobSeekerAttributeRepository : BaseService<SeekerAttribute>, IJobSeekerAttributeRepository
     {
         private readonly UserDbContext _userDbContext;
-        public JobSeekerAttributeRepository(UserDbContext userDbContext) :base(userDbContext)
+        private readonly PropertyMappingService _propertyMappingService;
+        public JobSeekerAttributeRepository(UserDbContext userDbContext, PropertyMappingService propertyMappingService) :base(userDbContext)
         {
             _userDbContext = userDbContext;
+            _propertyMappingService = propertyMappingService;
         }
 
         public async Task<SeekerAttribute> GetSeekerAttributeBySeekerIdAsync(string seekerId)
@@ -35,7 +40,9 @@ namespace BriefResume.Services
             return (await _userDbContext.SaveChangesAsync() >= 0);
         }
 
-        public async Task<IEnumerable<SeekerAttribute>> GetSeekerAttributes(JobSeekerParameter jobSeekerParameter)
+        public async Task<IEnumerable<SeekerAttribute>> GetSeekerAttributes(
+            JobSeekerParameter jobSeekerParameter,
+            PaginationParamaters paginationParamaters)
         {
             IQueryable<SeekerAttribute> IQuaryResult = _userDbContext.seekerAttributes;
             if (jobSeekerParameter==null)
@@ -47,8 +54,21 @@ namespace BriefResume.Services
                 var CollageContain = jobSeekerParameter.Colleage.Trim();
                 IQuaryResult = IQuaryResult.Where(t => t.Colleage.Contains(CollageContain));
             }
-            return await IQuaryResult.ToListAsync();
-
+            if (jobSeekerParameter.MinExpadSalary!=null)
+            {
+                IQuaryResult = IQuaryResult.Where(t => t.ExpadSalary > jobSeekerParameter.MinExpadSalary);
+            }
+            if (jobSeekerParameter.MaxExpadSalary != null)
+            {
+                IQuaryResult = IQuaryResult.Where(t => t.ExpadSalary < jobSeekerParameter.MaxExpadSalary);
+            }
+            //排序
+            if (!string.IsNullOrWhiteSpace(jobSeekerParameter.OrderBy))
+            {
+                var SeekerMap = _propertyMappingService.GetPropertyMapping<SeekerAttributeDto, SeekerAttribute>();
+                IQuaryResult = IQuaryResult.ApplySort(jobSeekerParameter.OrderBy, SeekerMap);
+            }
+            return await PagedList<SeekerAttribute>.CreateAsync(IQuaryResult, paginationParamaters.PageNumber, paginationParamaters.PageSize);
 
         }
     }

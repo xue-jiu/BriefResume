@@ -155,9 +155,7 @@ namespace BriefResume.Controllers
         }
 
 
-
-
-
+        //测试用
         [HttpGet]
         [Authorize(Roles = "superMoster")]
         public IActionResult TryController()
