@@ -22,7 +22,11 @@ namespace BriefResume.Controllers
         private readonly IAblityRepository _ablityManager;
         private readonly IJobSeekerAttributeRepository _seekerAttributeManager;
         private readonly IMapper _mapper;
-        public SeekerController(SeekerManager userManager, IAblityRepository ablityManager, IJobSeekerAttributeRepository seekerAttributeManager, IMapper mapper)
+        public SeekerController(
+            SeekerManager userManager, 
+            IAblityRepository ablityManager, 
+            IJobSeekerAttributeRepository seekerAttributeManager, 
+            IMapper mapper)
         {
             _jobSeekerManager = userManager;
             _ablityManager = ablityManager;
@@ -54,7 +58,6 @@ namespace BriefResume.Controllers
             return Ok(JobseekerFormRepo);
         }
 
-        //因为特征删除一般都是软删除,所以这里delete方法就没写,只写更新操作
         //更新操作 如果要用patch需要重写usermanager,不太方便
         [HttpPut("{seekerId}")]
         [Authorize]
@@ -77,6 +80,21 @@ namespace BriefResume.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{seekerId}")]
+        public async Task<IActionResult> DeleteSeeker(string seekerId)
+        {
+            var JobseekerFormRepo = await _jobSeekerManager.FindByIdAsync(seekerId);
+            if (JobseekerFormRepo == null)
+            {
+                return NotFound("没有找到该用户");
+            }
+            var result = await _jobSeekerManager.DeleteAsync(JobseekerFormRepo);
+            if (!result.Succeeded)
+            {
+                return BadRequest("删除失败");
+            }
+            return Ok("删除成功");
+        }
 
-     }
+    }
 }

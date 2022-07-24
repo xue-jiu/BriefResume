@@ -17,8 +17,10 @@ namespace BriefResume.Services
     public class JobSeekerAttributeRepository : BaseService<SeekerAttribute>, IJobSeekerAttributeRepository
     {
         private readonly UserDbContext _userDbContext;
-        private readonly PropertyMappingService _propertyMappingService;
-        public JobSeekerAttributeRepository(UserDbContext userDbContext, PropertyMappingService propertyMappingService) :base(userDbContext)
+        private readonly IPropertyMappingService _propertyMappingService;
+        public JobSeekerAttributeRepository(
+            UserDbContext userDbContext,
+            IPropertyMappingService propertyMappingService) :base(userDbContext)
         {
             _userDbContext = userDbContext;
             _propertyMappingService = propertyMappingService;
@@ -40,14 +42,14 @@ namespace BriefResume.Services
             return (await _userDbContext.SaveChangesAsync() >= 0);
         }
 
-        public async Task<IEnumerable<SeekerAttribute>> GetSeekerAttributes(
+        public async Task<PagedList<SeekerAttribute>> GetSeekerAttributes(
             JobSeekerParameter jobSeekerParameter,
             PaginationParamaters paginationParamaters)
         {
             IQueryable<SeekerAttribute> IQuaryResult = _userDbContext.seekerAttributes;
             if (jobSeekerParameter==null)
             {
-                return await IQuaryResult.ToListAsync();
+                throw new ArgumentNullException(nameof(jobSeekerParameter));
             }
             if (!string.IsNullOrWhiteSpace(jobSeekerParameter.Colleage))
             {

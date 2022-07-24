@@ -22,7 +22,10 @@ namespace BriefResume.Controllers
         private readonly IAblityRepository _ablityManager;
         private readonly IMapper _mapper;
 
-        public AblityController(IAblityRepository ablityRepository, IMapper mapper, SeekerManager userManager)
+        public AblityController(
+            IAblityRepository ablityRepository, 
+            IMapper mapper, 
+            SeekerManager userManager)
         {
             _ablityManager = ablityRepository;
             _mapper = mapper;
@@ -73,15 +76,14 @@ namespace BriefResume.Controllers
             [FromRoute] string ablityId,
             [FromBody]JsonPatchDocument<AblityUpdateDto> patchDocument) 
         { 
-
-            Ablity ablityFromRepo = ((AblityRepository)_ablityManager).Find(ablityId);//此处有bug
+            Ablity ablityFromRepo = ((AblityRepository)_ablityManager).Find(ablityId);
 
             if (ablityFromRepo == null)
             {
                 return BadRequest("该能力不存在");
             }
             var ablityToPatch = _mapper.Map<AblityUpdateDto>(ablityFromRepo);
-            patchDocument.ApplyTo(ablityToPatch);
+            patchDocument.ApplyTo(ablityToPatch,ModelState);
             if (!TryValidateModel(patchDocument))
             {
                 return ValidationProblem(ModelState);

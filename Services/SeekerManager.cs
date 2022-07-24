@@ -28,6 +28,9 @@ namespace BriefResume.Services
         {
             return await _userDbContext.interviewerAttributes.Where(c => c.InterviewerId == seekerId).Select(c => c.InterviewerAttributeId).FirstOrDefaultAsync();
         }
+        //对Users进行分页,排序,关键字搜索
+
+        //数据塑性
 
 
     }

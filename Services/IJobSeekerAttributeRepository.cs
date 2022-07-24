@@ -1,4 +1,5 @@
-﻿using BriefResume.Models;
+﻿using BriefResume.Helper;
+using BriefResume.Models;
 using BriefResume.Parameters;
 using BriefResume.ResourceParameters;
 using System;
@@ -13,7 +14,7 @@ namespace BriefResume.Services
         Task<SeekerAttribute> GetSeekerAttributeBySeekerIdAsync(string seekerId);
         Task CreateSeekerAttributeAsync(SeekerAttribute seekerAttribute, string seekerId);
         Task<bool> SaveChangesAsync();
-        Task<IEnumerable<SeekerAttribute>> GetSeekerAttributes(JobSeekerParameter jobSeekerParameter, PaginationParamaters paginationParamaters);
+        Task<PagedList<SeekerAttribute>> GetSeekerAttributes(JobSeekerParameter jobSeekerParameter, PaginationParamaters paginationParamaters);
 
     }
 }

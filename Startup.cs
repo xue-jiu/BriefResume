@@ -117,9 +117,13 @@ namespace BriefResume
             services.AddTransient<IAblityRepository, AblityRepository>();
             services.AddTransient<IInterviewerAttributeRepository, InterviewerAttributeRepository>();
             services.AddTransient<IJobSeekerAttributeRepository, JobSeekerAttributeRepository>();
+            //≈≈–Ú≤÷¥¢
+            services.AddTransient<IPropertyMappingService, PropertyMappingService>();
 
             //automapper◊¢»Î
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -133,6 +137,7 @@ namespace BriefResume
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            //app.UseResponseCaching();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

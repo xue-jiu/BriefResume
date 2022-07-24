@@ -10,13 +10,11 @@ namespace BriefResume.Services
 {
     public class PropertyMappingService : IPropertyMappingService
     {
-        private Dictionary<string, PropertyMappingValue> _touristRoutePropertyMapping =
+        private Dictionary<string, PropertyMappingValue> _SeekerAttributePropertyMapping =
            new Dictionary<string, PropertyMappingValue>(StringComparer.OrdinalIgnoreCase)
            {
-               { "Id", new PropertyMappingValue(new List<string>(){ "Id" }) },
-               { "Title", new PropertyMappingValue(new List<string>(){ "Title" })},
-               { "Rating", new PropertyMappingValue(new List<string>(){ "Rating" })},
-               { "OriginalPrice", new PropertyMappingValue(new List<string>(){ "OriginalPrice" })},
+               { "ExpadSalary", new PropertyMappingValue(new List<string>(){ "ExpadSalary" }) },
+               { "Degree", new PropertyMappingValue(new List<string>(){ "Degree" })},
            };
 
         private IList<IPropertyMapping> _propertyMappings = new List<IPropertyMapping>();
@@ -24,9 +22,9 @@ namespace BriefResume.Services
         public PropertyMappingService()
         {
             _propertyMappings.Add(
-                new PropertyMapping<SeekerUpdateDto, Seeker>(
-                    _touristRoutePropertyMapping));
+                new PropertyMapping<SeekerUpdateDto, Seeker>(_SeekerAttributePropertyMapping));
         }
+
 
         public Dictionary<string, PropertyMappingValue>
             GetPropertyMapping<TSource, TDestination>()
@@ -43,8 +41,6 @@ namespace BriefResume.Services
             throw new Exception(
                 $"Cannot find exact property mapping instance for <{typeof(TSource)},{typeof(TDestination)}");
         }
-
-
 
         public bool IsMappingExists<TSource, TDestination>(string fields)
         {

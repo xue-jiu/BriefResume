@@ -25,7 +25,10 @@ namespace BriefResume.Controllers
         private readonly SeekerManager _seekerUserManager;
         private readonly RoleManager<RoleExtension> _seekerRoleManager;
         private readonly IOptionsSnapshot<JwtSettings> _jwtSettings;
-        public AuthenticController(SeekerManager UserManager, IOptionsSnapshot<JwtSettings> optionsSnapshot, RoleManager<RoleExtension>  roleManager)
+        public AuthenticController(
+            SeekerManager UserManager, 
+            IOptionsSnapshot<JwtSettings> optionsSnapshot, 
+            RoleManager<RoleExtension>  roleManager)
         {
             _seekerUserManager = UserManager;
             _seekerRoleManager = roleManager;

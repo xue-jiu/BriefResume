@@ -52,7 +52,8 @@ namespace BriefResume.Helper
                 ExpandoObjectList.Add(dataShapedObject);
             }
             return ExpandoObjectList;
-
         }
+
+
     }
 }
