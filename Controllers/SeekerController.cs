@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using System.Threading.Tasks;
 using BriefResume.ResourceParameters;
 using BriefResume.Helpers;
+using BriefResume.Helper;
 
 namespace BriefResume.Controllers
 {
@@ -46,8 +47,8 @@ namespace BriefResume.Controllers
             var seekerFromRepo = await _seekerManager.FindSeekerAsync(seekerParameter, paginationParamaters);
 
             //元数据
-            var previousPageLink = seekerFromRepo.HasPrevious ? CreateSeekerUri(seekerParameter, paginationParamaters, ResourceUriType.PreviousPage) : null;
-            var nextPageLink = seekerFromRepo.HasNext ? CreateSeekerUri(seekerParameter, paginationParamaters, ResourceUriType.NextPage) : null;
+            var previousPageLink = seekerFromRepo.HasPrevious ? CreateSeekerPageUri(seekerParameter, paginationParamaters, ResourceUriType.PreviousPage) : null;
+            var nextPageLink = seekerFromRepo.HasNext ? CreateSeekerPageUri(seekerParameter, paginationParamaters, ResourceUriType.NextPage) : null;
             var paginationMetadata = new
             {
                 pageNumber = paginationParamaters.PageNumber,
@@ -114,7 +115,7 @@ namespace BriefResume.Controllers
             return Ok("删除成功");
         }
 
-        private string CreateSeekerUri
+        private string CreateSeekerPageUri
             (SeekerParameter seekerParameter,
             PaginationParamaters paginationParamaters,
             ResourceUriType resourceUriType)
@@ -155,6 +156,15 @@ namespace BriefResume.Controllers
                     });
             }
         }
+
+        //暂定
+        private Linker CreateHateoasUri()
+        {
+            var HateoasUriDictionary = new Dictionary<string, Linker>();
+            var UriParameters= new Dictionary<string, List<object>>();
+
+        }
+
 
     }
 }
