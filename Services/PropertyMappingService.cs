@@ -17,12 +17,21 @@ namespace BriefResume.Services
                { "Degree", new PropertyMappingValue(new List<string>(){ "Degree" })},
            };
 
+        private Dictionary<string, PropertyMappingValue> _SeekerPropertyMapping =
+           new Dictionary<string, PropertyMappingValue>(StringComparer.OrdinalIgnoreCase)
+           {
+                { "Email", new PropertyMappingValue(new List<string>(){ "Email" }) },
+                { "PhoneNumber", new PropertyMappingValue(new List<string>(){ "PhoneNumber" })},
+           };
+
         private IList<IPropertyMapping> _propertyMappings = new List<IPropertyMapping>();
 
         public PropertyMappingService()
         {
             _propertyMappings.Add(
-                new PropertyMapping<SeekerUpdateDto, Seeker>(_SeekerAttributePropertyMapping));
+                new PropertyMapping<SeekerAttributeDto, SeekerAttribute>(_SeekerAttributePropertyMapping));
+            _propertyMappings.Add(
+                new PropertyMapping<SeekerDto, Seeker>(_SeekerPropertyMapping));
         }
 
 

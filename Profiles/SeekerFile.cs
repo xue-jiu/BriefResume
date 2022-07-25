@@ -13,6 +13,7 @@ namespace BriefResume.Profiles
         public SeekerFile()
         {
             CreateMap<SeekerUpdateDto, Seeker>();
+            CreateMap<Seeker, SeekerDto>();
         }
     }
 }

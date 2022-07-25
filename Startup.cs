@@ -91,6 +91,7 @@ namespace BriefResume
                 { //若与下方xml写反，则当patch时会先默认使用xml
                     setupAction.SerializerSettings.ContractResolver =
                             new CamelCasePropertyNamesContractResolver();//注册解析jsondocument
+                    setupAction.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;//一对一关系中,避免循环选取
                 })
                 .AddXmlDataContractSerializerFormatters()//内容协商,可以使用Xml输出数据
                 .ConfigureApiBehaviorOptions(setupAction =>
@@ -123,7 +124,6 @@ namespace BriefResume
             //automapper注入
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

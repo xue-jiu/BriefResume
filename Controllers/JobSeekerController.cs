@@ -150,7 +150,6 @@ namespace BriefResume.Controllers
                         OrderBy = jobSeekerParameter.OrderBy,
                         MaxExpadSalary = jobSeekerParameter.MaxExpadSalary,
                         MinExpadSalary = jobSeekerParameter.MinExpadSalary
-
                     });
 
                 default:

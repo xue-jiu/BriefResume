@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.JsonPatch;
 using System.Threading.Tasks;
+using BriefResume.ResourceParameters;
+using BriefResume.Helpers;
 
 namespace BriefResume.Controllers
 {
@@ -18,7 +20,7 @@ namespace BriefResume.Controllers
     [ApiController]
     public class SeekerController : ControllerBase
     {
-        private readonly SeekerManager _jobSeekerManager;
+        private readonly SeekerManager _seekerManager;
         private readonly IAblityRepository _ablityManager;
         private readonly IJobSeekerAttributeRepository _seekerAttributeManager;
         private readonly IMapper _mapper;
@@ -28,7 +30,7 @@ namespace BriefResume.Controllers
             IJobSeekerAttributeRepository seekerAttributeManager, 
             IMapper mapper)
         {
-            _jobSeekerManager = userManager;
+            _seekerManager = userManager;
             _ablityManager = ablityManager;
             _seekerAttributeManager = seekerAttributeManager;
             _mapper = mapper;
@@ -37,12 +39,28 @@ namespace BriefResume.Controllers
         //查出所有jobseeker
         //此方法不全
         //创建一个字典,把seeker和jA他tribute的信息都传递进去
-        [HttpGet]
+        [HttpGet(Name =nameof(GetJobSeekersAsync))]
         [Authorize(Roles = "manager")]
-        public IActionResult GetJobSeekers()
+        public async Task<IActionResult> GetJobSeekersAsync([FromQuery]SeekerParameter seekerParameter, [FromQuery] PaginationParamaters paginationParamaters)
         {
-            var Users = _jobSeekerManager.Users.ToList();
-            return Ok(Users);
+            var seekerFromRepo = await _seekerManager.FindSeekerAsync(seekerParameter, paginationParamaters);
+
+            //元数据
+            var previousPageLink = seekerFromRepo.HasPrevious ? CreateSeekerUri(seekerParameter, paginationParamaters, ResourceUriType.PreviousPage) : null;
+            var nextPageLink = seekerFromRepo.HasNext ? CreateSeekerUri(seekerParameter, paginationParamaters, ResourceUriType.NextPage) : null;
+            var paginationMetadata = new
+            {
+                pageNumber = paginationParamaters.PageNumber,
+                pageSize = paginationParamaters.PageSize,
+                Email = seekerParameter.Email,
+                OrderBy = seekerParameter.OrderBy,
+                UserName = seekerParameter.UserName,
+                PhoneNumber = seekerParameter.PhoneNumber
+            };
+            Response.Headers.Add("x-pagination", Newtonsoft.Json.JsonConvert.SerializeObject(paginationMetadata));
+
+
+            return Ok(seekerFromRepo);
         }
 
         //找出指定Jobseeker
@@ -50,7 +68,7 @@ namespace BriefResume.Controllers
         [Authorize]
         public async Task<IActionResult> GetJobseeker([FromRoute] string seekerId) 
         {
-            var JobseekerFormRepo = await _jobSeekerManager.FindByIdAsync(seekerId);
+            var JobseekerFormRepo = await _seekerManager.FindByIdAsync(seekerId);
             if (JobseekerFormRepo==null)
             {
                 return NotFound("没有找到该用户");
@@ -65,14 +83,14 @@ namespace BriefResume.Controllers
             [FromRoute]string seekerId,
             [FromBody] SeekerUpdateDto seekerUpdateDto)
         {
-            var JobseekerFormRepo = await _jobSeekerManager.FindByIdAsync(seekerId);
+            var JobseekerFormRepo = await _seekerManager.FindByIdAsync(seekerId);
             if (JobseekerFormRepo == null)
             {
                 return NotFound("没有找到该用户");
             }
             //var UpdateDto =  _mapper.Map<Seeker>(seekerUpdateDto);
             _mapper.Map(seekerUpdateDto,JobseekerFormRepo);
-            var result = await _jobSeekerManager.UpdateAsync(JobseekerFormRepo);
+            var result = await _seekerManager.UpdateAsync(JobseekerFormRepo);
             if (!result.Succeeded)
             {
                 return BadRequest("更新失败");
@@ -83,17 +101,59 @@ namespace BriefResume.Controllers
         [HttpDelete("{seekerId}")]
         public async Task<IActionResult> DeleteSeeker(string seekerId)
         {
-            var JobseekerFormRepo = await _jobSeekerManager.FindByIdAsync(seekerId);
+            var JobseekerFormRepo = await _seekerManager.FindByIdAsync(seekerId);
             if (JobseekerFormRepo == null)
             {
                 return NotFound("没有找到该用户");
             }
-            var result = await _jobSeekerManager.DeleteAsync(JobseekerFormRepo);
+            var result = await _seekerManager.DeleteAsync(JobseekerFormRepo);
             if (!result.Succeeded)
             {
                 return BadRequest("删除失败");
             }
             return Ok("删除成功");
+        }
+
+        private string CreateSeekerUri
+            (SeekerParameter seekerParameter,
+            PaginationParamaters paginationParamaters,
+            ResourceUriType resourceUriType)
+        {
+            switch (resourceUriType)
+            {
+                case ResourceUriType.PreviousPage:
+                    return Url.Link(nameof(GetJobSeekersAsync), new
+                    {
+                        pageNumber = paginationParamaters.PageNumber - 1,
+                        pageSize = paginationParamaters.PageSize,
+                        Email = seekerParameter.Email,
+                        OrderBy = seekerParameter.OrderBy,
+                        UserName = seekerParameter.UserName,
+                        PhoneNumber = seekerParameter.PhoneNumber
+                    });
+
+                case ResourceUriType.NextPage:
+                    return Url.Link(nameof(GetJobSeekersAsync), new//controllerbase自带urlhelper
+                    {
+                        pageNumber = paginationParamaters.PageNumber + 1,
+                        pageSize = paginationParamaters.PageSize,
+                        Email = seekerParameter.Email,
+                        OrderBy = seekerParameter.OrderBy,
+                        UserName = seekerParameter.UserName,
+                        PhoneNumber = seekerParameter.PhoneNumber
+                    });
+
+                default:
+                    return Url.Link(nameof(GetJobSeekersAsync), new
+                    {
+                        pageNumber = paginationParamaters.PageNumber,
+                        pageSize = paginationParamaters.PageSize,
+                        Email = seekerParameter.Email,
+                        OrderBy = seekerParameter.OrderBy,
+                        UserName = seekerParameter.UserName,
+                        PhoneNumber = seekerParameter.PhoneNumber
+                    });
+            }
         }
 
     }
