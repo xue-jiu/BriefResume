@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -28,16 +29,19 @@ namespace BriefResume.Controllers
         private readonly RoleManager<RoleExtension> _seekerRoleManager;
         private readonly IOptionsSnapshot<JwtSettings> _jwtSettings;
         private readonly ILogger<AuthenticController> _logger;
+        private readonly IMemoryCache _memoryCache;
         public AuthenticController(
             SeekerManager UserManager, 
             IOptionsSnapshot<JwtSettings> optionsSnapshot, 
             RoleManager<RoleExtension>  roleManager,
-            ILogger<AuthenticController> logger)
+            ILogger<AuthenticController> logger,
+            IMemoryCache memoryCache)
         {
             _seekerUserManager = UserManager;
             _seekerRoleManager = roleManager;
             _jwtSettings = optionsSnapshot;
             _logger = logger;
+            _memoryCache = memoryCache;
         }
 
         [HttpPost("Login")]
@@ -162,13 +166,18 @@ namespace BriefResume.Controllers
             return Ok("授权成功");
         }
 
-
         //测试用
         [HttpGet]
         public IActionResult TryController()
         {
             _logger.LogDebug("serilog日志成功配置");
-            return Ok("是superMoster");
+           var item =  _memoryCache.GetOrCreate("TrymemoryCache",e=> 
+            {
+                e.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10);
+                _logger.LogInformation("内存缓存配置完成");
+                return "hahah"+DateTime.Now.ToString();
+            });
+            return Ok(item);
         }
 
     }

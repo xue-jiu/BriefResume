@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using BriefResume.ResourceParameters;
 using BriefResume.Helpers;
 using BriefResume.Helper;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace BriefResume.Controllers
 {
@@ -25,16 +26,22 @@ namespace BriefResume.Controllers
         private readonly IAblityRepository _ablityManager;
         private readonly IJobSeekerAttributeRepository _seekerAttributeManager;
         private readonly IMapper _mapper;
+        private readonly IMemoryCache _memoryCache;
+        private readonly IPropertyMappingService _propertyMappingService;
         public SeekerController(
             SeekerManager userManager, 
             IAblityRepository ablityManager, 
             IJobSeekerAttributeRepository seekerAttributeManager, 
-            IMapper mapper)
+            IMapper mapper,
+            IMemoryCache memoryCache,
+            IPropertyMappingService propertyMappingService)
         {
             _seekerManager = userManager;
             _ablityManager = ablityManager;
             _seekerAttributeManager = seekerAttributeManager;
             _mapper = mapper;
+            _memoryCache = memoryCache;
+            _propertyMappingService = propertyMappingService;
         }
 
         //查出所有jobseeker
@@ -44,8 +51,17 @@ namespace BriefResume.Controllers
         [Authorize(Roles = "manager")]
         public async Task<IActionResult> GetJobSeekersAsync([FromQuery]SeekerParameter seekerParameter, [FromQuery] PaginationParamaters paginationParamaters)
         {
-            var seekerFromRepo = await _seekerManager.FindSeekerAsync(seekerParameter, paginationParamaters);
+            if (!_propertyMappingService.IsMappingExists<SeekerDto, Seeker>(seekerParameter.OrderBy))
+            {
+                return BadRequest("请输入正确的排序参数");
+            }
 
+            var seekerFromRepo = await  _memoryCache.GetOrCreateAsync("JobSeekers", async e =>
+            {
+                e.SlidingExpiration = TimeSpan.FromMinutes(5);//设置5分钟缓存
+                return await _seekerManager.FindSeekerAsync(seekerParameter, paginationParamaters);
+            });
+                
             //元数据
             var previousPageLink = seekerFromRepo.HasPrevious ? CreateSeekerPageUri(seekerParameter, paginationParamaters, ResourceUriType.PreviousPage) : null;
             var nextPageLink = seekerFromRepo.HasNext ? CreateSeekerPageUri(seekerParameter, paginationParamaters, ResourceUriType.NextPage) : null;
@@ -60,8 +76,9 @@ namespace BriefResume.Controllers
             };
             Response.Headers.Add("x-pagination", Newtonsoft.Json.JsonConvert.SerializeObject(paginationMetadata));
 
-
-            return Ok(seekerFromRepo);
+            var SeekerDtoShows= _mapper.Map<IEnumerable<SeekerDto>>(seekerFromRepo);
+            //var SeekerDtoShows = seekerFromRepo;
+            return Ok(SeekerDtoShows);
         }
 
         //找出指定Jobseeker

@@ -61,7 +61,7 @@ namespace BriefResume
                         IssuerSigningKey = new SymmetricSecurityKey(secretByte)
                     };
                 });
-
+            
 
             services.AddDataProtection();//密码加密服务
             services.AddIdentityCore<Seeker>(opt => //与AddIdentity不同,AddIdentity还会添加默认界面
@@ -126,6 +126,9 @@ namespace BriefResume
             //automapper注入
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            //缓存机制,不采用自动的服务器缓存,而是手动管理
+            services.AddMemoryCache();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -139,6 +142,7 @@ namespace BriefResume
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            
             //app.UseResponseCaching();
             app.UseEndpoints(endpoints =>
             {

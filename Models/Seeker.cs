@@ -8,6 +8,10 @@ namespace BriefResume.Models
 {
     public class Seeker : IdentityUser
     {
+        public Seeker():base()
+        {
+
+        }
         public string Preference { get; set; }
         public DateTime CreateDatetime { get; set; }
 
