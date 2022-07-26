@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -25,14 +27,17 @@ namespace BriefResume.Controllers
         private readonly SeekerManager _seekerUserManager;
         private readonly RoleManager<RoleExtension> _seekerRoleManager;
         private readonly IOptionsSnapshot<JwtSettings> _jwtSettings;
+        private readonly ILogger<AuthenticController> _logger;
         public AuthenticController(
             SeekerManager UserManager, 
             IOptionsSnapshot<JwtSettings> optionsSnapshot, 
-            RoleManager<RoleExtension>  roleManager)
+            RoleManager<RoleExtension>  roleManager,
+            ILogger<AuthenticController> logger)
         {
             _seekerUserManager = UserManager;
             _seekerRoleManager = roleManager;
             _jwtSettings = optionsSnapshot;
+            _logger = logger;
         }
 
         [HttpPost("Login")]
@@ -160,9 +165,9 @@ namespace BriefResume.Controllers
 
         //测试用
         [HttpGet]
-        [Authorize(Roles = "superMoster")]
         public IActionResult TryController()
         {
+            _logger.LogDebug("serilog日志成功配置");
             return Ok("是superMoster");
         }
 

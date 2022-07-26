@@ -1,0 +1,515 @@
+2022-07-26 10:57:22.644 +08:00 [INF] Starting up
+2022-07-26 10:57:24.767 +08:00 [DBG] Hosting starting
+2022-07-26 10:57:24.812 +08:00 [INF] User profile is available. Using 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-26 10:57:24.834 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-5ee17901-3a58-460a-8b3e-58cab3656ee3.xml'.
+2022-07-26 10:57:24.869 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-d99e2bd1-9840-4fb2-8f4d-775c5583b6c3.xml'.
+2022-07-26 10:57:24.877 +08:00 [DBG] Found key {5ee17901-3a58-460a-8b3e-58cab3656ee3}.
+2022-07-26 10:57:24.889 +08:00 [DBG] Found key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3}.
+2022-07-26 10:57:24.915 +08:00 [DBG] Considering key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} with expiration date 2022-10-13 16:22:17Z as default key.
+2022-07-26 10:57:24.928 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 10:57:24.932 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2022-07-26 10:57:24.934 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 10:57:24.940 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2022-07-26 10:57:24.947 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2022-07-26 10:57:24.951 +08:00 [DBG] Using key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} as the default key.
+2022-07-26 10:57:24.953 +08:00 [DBG] Key ring with default key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} was loaded during application startup.
+2022-07-26 10:57:25.293 +08:00 [DBG] Using development certificate: CN=localhost (Thumbprint: 317523BFADB6C025CC8162F0380C816276E4BAFE)
+2022-07-26 10:57:25.414 +08:00 [INF] Now listening on: https://localhost:5001
+2022-07-26 10:57:25.414 +08:00 [INF] Now listening on: http://localhost:5000
+2022-07-26 10:57:25.416 +08:00 [DBG] Loaded hosting startup assembly BriefResume
+2022-07-26 10:57:25.419 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-26 10:57:25.419 +08:00 [INF] Hosting environment: Development
+2022-07-26 10:57:25.420 +08:00 [INF] Content root path: C:\Users\17643\source\repos\BriefResume
+2022-07-26 10:57:25.420 +08:00 [DBG] Hosting started
+2022-07-26 10:57:25.510 +08:00 [DBG] Connection id "0HMJEMA8S7B7J" received FIN.
+2022-07-26 10:57:25.510 +08:00 [DBG] Connection id "0HMJEMA8S7B7K" received FIN.
+2022-07-26 10:57:25.524 +08:00 [DBG] Connection id "0HMJEMA8S7B7J" accepted.
+2022-07-26 10:57:25.524 +08:00 [DBG] Connection id "0HMJEMA8S7B7K" accepted.
+2022-07-26 10:57:25.527 +08:00 [DBG] Connection id "0HMJEMA8S7B7J" started.
+2022-07-26 10:57:25.527 +08:00 [DBG] Connection id "0HMJEMA8S7B7K" started.
+2022-07-26 10:57:25.555 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 10:57:25.555 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 10:57:25.652 +08:00 [DBG] Connection id "0HMJEMA8S7B7K" stopped.
+2022-07-26 10:57:25.652 +08:00 [DBG] Connection id "0HMJEMA8S7B7J" stopped.
+2022-07-26 10:57:25.655 +08:00 [DBG] Connection id "0HMJEMA8S7B7J" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 10:57:25.655 +08:00 [DBG] Connection id "0HMJEMA8S7B7K" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 10:57:27.700 +08:00 [DBG] Connection id "0HMJEMA8S7B7L" accepted.
+2022-07-26 10:57:27.729 +08:00 [DBG] Connection id "0HMJEMA8S7B7L" started.
+2022-07-26 10:57:27.736 +08:00 [DBG] Connection id "0HMJEMA8S7B7M" accepted.
+2022-07-26 10:57:27.743 +08:00 [DBG] Connection id "0HMJEMA8S7B7M" started.
+2022-07-26 10:57:28.005 +08:00 [DBG] Connection "0HMJEMA8S7B7M" established using the following protocol: "Tls12"
+2022-07-26 10:57:28.049 +08:00 [DBG] Connection "0HMJEMA8S7B7L" established using the following protocol: "Tls12"
+2022-07-26 10:57:28.068 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-07-26 10:57:28.077 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-07-26 10:57:28.110 +08:00 [DBG] No candidates found for the request path '/'
+2022-07-26 10:57:28.112 +08:00 [DBG] Request did not match any endpoints
+2022-07-26 10:57:28.222 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 10:57:28.233 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 169.0787ms
+2022-07-26 10:57:46.246 +08:00 [DBG] Connection id "0HMJEMA8S7B7L" received FIN.
+2022-07-26 10:57:46.246 +08:00 [DBG] Connection id "0HMJEMA8S7B7M" received FIN.
+2022-07-26 10:57:46.257 +08:00 [DBG] Connection id "0HMJEMA8S7B7L" is closed. The last processed stream ID was 0.
+2022-07-26 10:57:46.257 +08:00 [DBG] Connection id "0HMJEMA8S7B7M" is closed. The last processed stream ID was 1.
+2022-07-26 10:57:46.260 +08:00 [DBG] Connection id "0HMJEMA8S7B7L" sending FIN because: "The client closed the connection."
+2022-07-26 10:57:46.260 +08:00 [DBG] Connection id "0HMJEMA8S7B7M" sending FIN because: "The client closed the connection."
+2022-07-26 10:57:46.262 +08:00 [DBG] Connection id "0HMJEMA8S7B7L" stopped.
+2022-07-26 10:57:46.263 +08:00 [DBG] Connection id "0HMJEMA8S7B7M" stopped.
+2022-07-26 10:58:01.731 +08:00 [DBG] Connection id "0HMJEMA8S7B7N" received FIN.
+2022-07-26 10:58:01.732 +08:00 [DBG] Connection id "0HMJEMA8S7B7N" accepted.
+2022-07-26 10:58:01.737 +08:00 [DBG] Connection id "0HMJEMA8S7B7N" started.
+2022-07-26 10:58:01.738 +08:00 [DBG] Connection id "0HMJEMA8S7B7O" accepted.
+2022-07-26 10:58:01.738 +08:00 [DBG] Connection id "0HMJEMA8S7B7O" started.
+2022-07-26 10:58:01.739 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 10:58:01.741 +08:00 [DBG] Connection id "0HMJEMA8S7B7N" stopped.
+2022-07-26 10:58:01.743 +08:00 [DBG] Connection id "0HMJEMA8S7B7N" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 10:58:01.757 +08:00 [DBG] Connection "0HMJEMA8S7B7O" established using the following protocol: "Tls12"
+2022-07-26 10:58:01.772 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Authentic - -
+2022-07-26 10:58:01.850 +08:00 [DBG] 1 candidate(s) found for the request path '/api/Authentic'
+2022-07-26 10:58:01.854 +08:00 [DBG] Endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)' with route pattern 'api/Authentic' is valid for the request path '/api/Authentic'
+2022-07-26 10:58:01.855 +08:00 [DBG] Request matched endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 10:58:01.856 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 10:58:01.857 +08:00 [INF] Executing endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 10:58:01.868 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2022-07-26 10:58:01.902 +08:00 [INF] Route matched with {action = "TryController", controller = "Authentic"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TryController() on controller BriefResume.Controllers.AuthenticController (BriefResume).
+2022-07-26 10:58:01.904 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-07-26 10:58:01.904 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-07-26 10:58:01.905 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-07-26 10:58:01.906 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-07-26 10:58:01.907 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-07-26 10:58:01.908 +08:00 [DBG] Executing controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 10:58:02.067 +08:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2022-07-26 10:58:02.147 +08:00 [INF] Executed action BriefResume.Controllers.AuthenticController.TryController (BriefResume) in 232.4017ms
+2022-07-26 10:58:02.151 +08:00 [INF] Executed endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 10:58:02.154 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Serilog.ILogger' while attempting to activate 'BriefResume.Controllers.AuthenticController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method2(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-26 10:58:02.191 +08:00 [DBG] Connection id "0HMJEMA8S7B7O" completed keep alive response.
+2022-07-26 10:58:02.193 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Authentic - - - 500 - text/plain 420.9217ms
+2022-07-26 11:03:27.339 +08:00 [INF] Starting up
+2022-07-26 11:03:30.640 +08:00 [DBG] Hosting starting
+2022-07-26 11:03:30.848 +08:00 [INF] User profile is available. Using 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-26 11:03:30.931 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-5ee17901-3a58-460a-8b3e-58cab3656ee3.xml'.
+2022-07-26 11:03:31.014 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-d99e2bd1-9840-4fb2-8f4d-775c5583b6c3.xml'.
+2022-07-26 11:03:31.028 +08:00 [DBG] Found key {5ee17901-3a58-460a-8b3e-58cab3656ee3}.
+2022-07-26 11:03:31.055 +08:00 [DBG] Found key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3}.
+2022-07-26 11:03:31.070 +08:00 [DBG] Considering key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} with expiration date 2022-10-13 16:22:17Z as default key.
+2022-07-26 11:03:31.106 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 11:03:31.112 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2022-07-26 11:03:31.115 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 11:03:31.125 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2022-07-26 11:03:31.131 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2022-07-26 11:03:31.138 +08:00 [DBG] Using key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} as the default key.
+2022-07-26 11:03:31.140 +08:00 [DBG] Key ring with default key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} was loaded during application startup.
+2022-07-26 11:03:31.619 +08:00 [DBG] Using development certificate: CN=localhost (Thumbprint: 317523BFADB6C025CC8162F0380C816276E4BAFE)
+2022-07-26 11:03:31.749 +08:00 [INF] Now listening on: https://localhost:5001
+2022-07-26 11:03:31.750 +08:00 [INF] Now listening on: http://localhost:5000
+2022-07-26 11:03:31.757 +08:00 [DBG] Loaded hosting startup assembly BriefResume
+2022-07-26 11:03:31.763 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-26 11:03:31.763 +08:00 [INF] Hosting environment: Development
+2022-07-26 11:03:31.763 +08:00 [INF] Content root path: C:\Users\17643\source\repos\BriefResume
+2022-07-26 11:03:31.764 +08:00 [DBG] Hosting started
+2022-07-26 11:03:31.823 +08:00 [DBG] Connection id "0HMJEMDM1L37S" received FIN.
+2022-07-26 11:03:31.839 +08:00 [DBG] Connection id "0HMJEMDM1L37S" accepted.
+2022-07-26 11:03:31.840 +08:00 [DBG] Connection id "0HMJEMDM1L37S" started.
+2022-07-26 11:03:31.864 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:03:31.948 +08:00 [DBG] Connection id "0HMJEMDM1L37S" stopped.
+2022-07-26 11:03:31.952 +08:00 [DBG] Connection id "0HMJEMDM1L37S" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:03:33.243 +08:00 [DBG] Connection id "0HMJEMDM1L37T" accepted.
+2022-07-26 11:03:33.341 +08:00 [DBG] Connection id "0HMJEMDM1L37T" started.
+2022-07-26 11:03:33.606 +08:00 [DBG] Connection "0HMJEMDM1L37T" established using the following protocol: "Tls12"
+2022-07-26 11:03:33.659 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-07-26 11:03:33.663 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-07-26 11:03:33.713 +08:00 [DBG] No candidates found for the request path '/'
+2022-07-26 11:03:33.715 +08:00 [DBG] Request did not match any endpoints
+2022-07-26 11:03:33.827 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:03:33.861 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 198.8350ms
+2022-07-26 11:03:35.332 +08:00 [DBG] Connection id "0HMJEMDM1L37U" accepted.
+2022-07-26 11:03:35.332 +08:00 [DBG] Connection id "0HMJEMDM1L37U" received FIN.
+2022-07-26 11:03:35.335 +08:00 [DBG] Connection id "0HMJEMDM1L37V" accepted.
+2022-07-26 11:03:35.335 +08:00 [DBG] Connection id "0HMJEMDM1L37U" started.
+2022-07-26 11:03:35.336 +08:00 [DBG] Connection id "0HMJEMDM1L37V" started.
+2022-07-26 11:03:35.339 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:03:35.343 +08:00 [DBG] Connection id "0HMJEMDM1L37U" stopped.
+2022-07-26 11:03:35.345 +08:00 [DBG] Connection id "0HMJEMDM1L37U" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:03:35.364 +08:00 [DBG] Connection "0HMJEMDM1L37V" established using the following protocol: "Tls12"
+2022-07-26 11:03:35.374 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Authentic - -
+2022-07-26 11:03:35.412 +08:00 [DBG] 1 candidate(s) found for the request path '/api/Authentic'
+2022-07-26 11:03:35.418 +08:00 [DBG] Endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)' with route pattern 'api/Authentic' is valid for the request path '/api/Authentic'
+2022-07-26 11:03:35.421 +08:00 [DBG] Request matched endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:03:35.422 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:03:35.423 +08:00 [INF] Executing endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:03:35.435 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2022-07-26 11:03:35.476 +08:00 [INF] Route matched with {action = "TryController", controller = "Authentic"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TryController() on controller BriefResume.Controllers.AuthenticController (BriefResume).
+2022-07-26 11:03:35.477 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-07-26 11:03:35.478 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-07-26 11:03:35.479 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-07-26 11:03:35.480 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-07-26 11:03:35.483 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-07-26 11:03:35.485 +08:00 [DBG] Executing controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:03:35.621 +08:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2022-07-26 11:03:35.674 +08:00 [INF] Executed action BriefResume.Controllers.AuthenticController.TryController (BriefResume) in 183.3092ms
+2022-07-26 11:03:35.678 +08:00 [INF] Executed endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:03:35.680 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Serilog.ILogger' while attempting to activate 'BriefResume.Controllers.AuthenticController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method2(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-07-26 11:03:35.727 +08:00 [DBG] Connection id "0HMJEMDM1L37V" completed keep alive response.
+2022-07-26 11:03:35.729 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Authentic - - - 500 - text/plain 354.6443ms
+2022-07-26 11:03:36.770 +08:00 [DBG] Connection id "0HMJEMDM1L37T" received FIN.
+2022-07-26 11:03:36.778 +08:00 [DBG] Connection id "0HMJEMDM1L37T" is closed. The last processed stream ID was 1.
+2022-07-26 11:03:36.780 +08:00 [DBG] Connection id "0HMJEMDM1L37T" sending FIN because: "The client closed the connection."
+2022-07-26 11:03:36.797 +08:00 [DBG] Connection id "0HMJEMDM1L37T" stopped.
+2022-07-26 11:12:21.711 +08:00 [INF] Starting up
+2022-07-26 11:12:26.604 +08:00 [DBG] Hosting starting
+2022-07-26 11:12:26.763 +08:00 [INF] User profile is available. Using 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-26 11:12:26.796 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-5ee17901-3a58-460a-8b3e-58cab3656ee3.xml'.
+2022-07-26 11:12:26.906 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-d99e2bd1-9840-4fb2-8f4d-775c5583b6c3.xml'.
+2022-07-26 11:12:26.925 +08:00 [DBG] Found key {5ee17901-3a58-460a-8b3e-58cab3656ee3}.
+2022-07-26 11:12:26.939 +08:00 [DBG] Found key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3}.
+2022-07-26 11:12:26.957 +08:00 [DBG] Considering key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} with expiration date 2022-10-13 16:22:17Z as default key.
+2022-07-26 11:12:26.979 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 11:12:26.983 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2022-07-26 11:12:26.989 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 11:12:26.996 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2022-07-26 11:12:27.001 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2022-07-26 11:12:27.007 +08:00 [DBG] Using key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} as the default key.
+2022-07-26 11:12:27.010 +08:00 [DBG] Key ring with default key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} was loaded during application startup.
+2022-07-26 11:12:27.595 +08:00 [DBG] Using development certificate: CN=localhost (Thumbprint: 317523BFADB6C025CC8162F0380C816276E4BAFE)
+2022-07-26 11:12:28.543 +08:00 [INF] Now listening on: https://localhost:5001
+2022-07-26 11:12:28.548 +08:00 [INF] Now listening on: http://localhost:5000
+2022-07-26 11:12:28.563 +08:00 [DBG] Loaded hosting startup assembly BriefResume
+2022-07-26 11:12:28.564 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-26 11:12:28.564 +08:00 [INF] Hosting environment: Development
+2022-07-26 11:12:28.564 +08:00 [INF] Content root path: C:\Users\17643\source\repos\BriefResume
+2022-07-26 11:12:28.565 +08:00 [DBG] Hosting started
+2022-07-26 11:12:28.800 +08:00 [DBG] Connection id "0HMJEMIM2L8H3" received FIN.
+2022-07-26 11:12:28.827 +08:00 [DBG] Connection id "0HMJEMIM2L8H3" accepted.
+2022-07-26 11:12:28.830 +08:00 [DBG] Connection id "0HMJEMIM2L8H3" started.
+2022-07-26 11:12:28.886 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:12:29.479 +08:00 [DBG] Connection id "0HMJEMIM2L8H3" stopped.
+2022-07-26 11:12:29.498 +08:00 [DBG] Connection id "0HMJEMIM2L8H3" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:12:30.276 +08:00 [DBG] Connection id "0HMJEMIM2L8H4" accepted.
+2022-07-26 11:12:30.303 +08:00 [DBG] Connection id "0HMJEMIM2L8H4" started.
+2022-07-26 11:12:30.309 +08:00 [DBG] Connection id "0HMJEMIM2L8H5" accepted.
+2022-07-26 11:12:30.311 +08:00 [DBG] Connection id "0HMJEMIM2L8H4" received FIN.
+2022-07-26 11:12:30.330 +08:00 [DBG] Connection id "0HMJEMIM2L8H5" started.
+2022-07-26 11:12:30.332 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:12:30.341 +08:00 [DBG] Connection id "0HMJEMIM2L8H4" stopped.
+2022-07-26 11:12:30.342 +08:00 [DBG] Connection id "0HMJEMIM2L8H4" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:12:30.529 +08:00 [DBG] Connection "0HMJEMIM2L8H5" established using the following protocol: "Tls12"
+2022-07-26 11:12:30.797 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Authentic - -
+2022-07-26 11:12:30.825 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-07-26 11:12:30.942 +08:00 [DBG] 1 candidate(s) found for the request path '/api/Authentic'
+2022-07-26 11:12:31.026 +08:00 [DBG] Endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)' with route pattern 'api/Authentic' is valid for the request path '/api/Authentic'
+2022-07-26 11:12:31.030 +08:00 [DBG] Request matched endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:12:31.228 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:12:31.236 +08:00 [INF] Executing endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:12:31.275 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2022-07-26 11:12:31.375 +08:00 [INF] Route matched with {action = "TryController", controller = "Authentic"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TryController() on controller BriefResume.Controllers.AuthenticController (BriefResume).
+2022-07-26 11:12:31.426 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-07-26 11:12:31.444 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-07-26 11:12:31.460 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-07-26 11:12:31.465 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-07-26 11:12:31.508 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-07-26 11:12:31.514 +08:00 [DBG] Executing controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:12:32.344 +08:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2022-07-26 11:12:32.725 +08:00 [DBG] Executed controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:12:32.928 +08:00 [DBG] 测试所用
+2022-07-26 11:12:32.941 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.XmlDataContractSerializerOutputFormatter"]
+2022-07-26 11:12:32.946 +08:00 [DBG] No information found on request to perform content negotiation.
+2022-07-26 11:12:32.947 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2022-07-26 11:12:32.951 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2022-07-26 11:12:32.955 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2022-07-26 11:12:32.957 +08:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2022-07-26 11:12:32.976 +08:00 [INF] Executed action BriefResume.Controllers.AuthenticController.TryController (BriefResume) in 1455.5843ms
+2022-07-26 11:12:32.979 +08:00 [INF] Executed endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:12:32.980 +08:00 [DBG] Connection id "0HMJEMIM2L8H5" completed keep alive response.
+2022-07-26 11:12:33.007 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Authentic - - - 200 - text/plain;+charset=utf-8 2215.0315ms
+2022-07-26 11:12:33.953 +08:00 [DBG] Connection id "0HMJEMIM2L8H6" accepted.
+2022-07-26 11:12:33.969 +08:00 [DBG] Connection id "0HMJEMIM2L8H6" started.
+2022-07-26 11:12:34.125 +08:00 [DBG] Connection "0HMJEMIM2L8H6" established using the following protocol: "Tls12"
+2022-07-26 11:12:34.218 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-07-26 11:12:34.222 +08:00 [DBG] No candidates found for the request path '/'
+2022-07-26 11:12:34.222 +08:00 [DBG] Request did not match any endpoints
+2022-07-26 11:12:34.223 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:12:34.228 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 10.0755ms
+2022-07-26 11:12:37.650 +08:00 [DBG] Connection id "0HMJEMIM2L8H6" received FIN.
+2022-07-26 11:12:37.658 +08:00 [DBG] Connection id "0HMJEMIM2L8H6" is closed. The last processed stream ID was 1.
+2022-07-26 11:12:37.660 +08:00 [DBG] Connection id "0HMJEMIM2L8H6" sending FIN because: "The client closed the connection."
+2022-07-26 11:12:37.678 +08:00 [DBG] Connection id "0HMJEMIM2L8H6" stopped.
+2022-07-26 11:13:16.182 +08:00 [INF] Application is shutting down...
+2022-07-26 11:13:16.191 +08:00 [DBG] Hosting stopping
+2022-07-26 11:13:16.285 +08:00 [DBG] Connection id "0HMJEMIM2L8H5" disconnecting.
+2022-07-26 11:13:16.290 +08:00 [DBG] Connection id "0HMJEMIM2L8H5" stopped.
+2022-07-26 11:13:16.292 +08:00 [DBG] Connection id "0HMJEMIM2L8H5" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:13:16.298 +08:00 [DBG] Hosting stopped
+2022-07-26 11:15:14.334 +08:00 [INF] Starting up
+2022-07-26 11:15:16.682 +08:00 [DBG] Hosting starting
+2022-07-26 11:15:16.727 +08:00 [INF] User profile is available. Using 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-26 11:15:16.770 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-5ee17901-3a58-460a-8b3e-58cab3656ee3.xml'.
+2022-07-26 11:15:16.787 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-d99e2bd1-9840-4fb2-8f4d-775c5583b6c3.xml'.
+2022-07-26 11:15:16.795 +08:00 [DBG] Found key {5ee17901-3a58-460a-8b3e-58cab3656ee3}.
+2022-07-26 11:15:16.804 +08:00 [DBG] Found key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3}.
+2022-07-26 11:15:16.814 +08:00 [DBG] Considering key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} with expiration date 2022-10-13 16:22:17Z as default key.
+2022-07-26 11:15:16.828 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 11:15:16.831 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2022-07-26 11:15:16.833 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 11:15:16.843 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2022-07-26 11:15:16.847 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2022-07-26 11:15:16.850 +08:00 [DBG] Using key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} as the default key.
+2022-07-26 11:15:16.854 +08:00 [DBG] Key ring with default key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} was loaded during application startup.
+2022-07-26 11:15:17.211 +08:00 [DBG] Using development certificate: CN=localhost (Thumbprint: 317523BFADB6C025CC8162F0380C816276E4BAFE)
+2022-07-26 11:15:17.338 +08:00 [INF] Now listening on: https://localhost:5001
+2022-07-26 11:15:17.340 +08:00 [INF] Now listening on: http://localhost:5000
+2022-07-26 11:15:17.341 +08:00 [DBG] Loaded hosting startup assembly BriefResume
+2022-07-26 11:15:17.347 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-26 11:15:17.347 +08:00 [INF] Hosting environment: Development
+2022-07-26 11:15:17.348 +08:00 [INF] Content root path: C:\Users\17643\source\repos\BriefResume
+2022-07-26 11:15:17.349 +08:00 [DBG] Hosting started
+2022-07-26 11:15:17.609 +08:00 [DBG] Connection id "0HMJEMK8CEH9O" accepted.
+2022-07-26 11:15:17.609 +08:00 [DBG] Connection id "0HMJEMK8CEH9N" accepted.
+2022-07-26 11:15:17.619 +08:00 [DBG] Connection id "0HMJEMK8CEH9O" started.
+2022-07-26 11:15:17.622 +08:00 [DBG] Connection id "0HMJEMK8CEH9O" received FIN.
+2022-07-26 11:15:17.622 +08:00 [DBG] Connection id "0HMJEMK8CEH9N" received FIN.
+2022-07-26 11:15:17.635 +08:00 [DBG] Connection id "0HMJEMK8CEH9N" started.
+2022-07-26 11:15:17.707 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:15:17.708 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:15:17.829 +08:00 [DBG] Connection id "0HMJEMK8CEH9N" stopped.
+2022-07-26 11:15:17.829 +08:00 [DBG] Connection id "0HMJEMK8CEH9O" stopped.
+2022-07-26 11:15:17.834 +08:00 [DBG] Connection id "0HMJEMK8CEH9O" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:15:17.834 +08:00 [DBG] Connection id "0HMJEMK8CEH9N" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:15:19.923 +08:00 [DBG] Connection id "0HMJEMK8CEH9P" accepted.
+2022-07-26 11:15:20.153 +08:00 [DBG] Connection id "0HMJEMK8CEH9P" started.
+2022-07-26 11:15:20.771 +08:00 [DBG] Connection "0HMJEMK8CEH9P" established using the following protocol: "Tls12"
+2022-07-26 11:15:20.928 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-07-26 11:15:20.936 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-07-26 11:15:20.987 +08:00 [DBG] No candidates found for the request path '/'
+2022-07-26 11:15:20.993 +08:00 [DBG] Request did not match any endpoints
+2022-07-26 11:15:21.391 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:15:21.414 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 491.9001ms
+2022-07-26 11:15:22.811 +08:00 [DBG] Connection id "0HMJEMK8CEH9P" received FIN.
+2022-07-26 11:15:22.825 +08:00 [DBG] Connection id "0HMJEMK8CEH9P" is closed. The last processed stream ID was 1.
+2022-07-26 11:15:22.825 +08:00 [DBG] Connection id "0HMJEMK8CEH9P" sending FIN because: "The client closed the connection."
+2022-07-26 11:15:22.833 +08:00 [DBG] Connection id "0HMJEMK8CEH9P" stopped.
+2022-07-26 11:15:23.787 +08:00 [DBG] Connection id "0HMJEMK8CEH9Q" accepted.
+2022-07-26 11:15:23.787 +08:00 [DBG] Connection id "0HMJEMK8CEH9Q" received FIN.
+2022-07-26 11:15:23.794 +08:00 [DBG] Connection id "0HMJEMK8CEH9R" accepted.
+2022-07-26 11:15:23.798 +08:00 [DBG] Connection id "0HMJEMK8CEH9Q" started.
+2022-07-26 11:15:23.801 +08:00 [DBG] Connection id "0HMJEMK8CEH9R" started.
+2022-07-26 11:15:23.802 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:15:23.810 +08:00 [DBG] Connection id "0HMJEMK8CEH9Q" stopped.
+2022-07-26 11:15:23.811 +08:00 [DBG] Connection id "0HMJEMK8CEH9Q" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:15:23.811 +08:00 [DBG] Connection "0HMJEMK8CEH9R" established using the following protocol: "Tls12"
+2022-07-26 11:15:23.820 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Authentic - -
+2022-07-26 11:15:24.031 +08:00 [DBG] 1 candidate(s) found for the request path '/api/Authentic'
+2022-07-26 11:15:24.039 +08:00 [DBG] Endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)' with route pattern 'api/Authentic' is valid for the request path '/api/Authentic'
+2022-07-26 11:15:24.043 +08:00 [DBG] Request matched endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:15:24.045 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:15:24.048 +08:00 [INF] Executing endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:15:24.062 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2022-07-26 11:15:24.112 +08:00 [INF] Route matched with {action = "TryController", controller = "Authentic"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TryController() on controller BriefResume.Controllers.AuthenticController (BriefResume).
+2022-07-26 11:15:24.118 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-07-26 11:15:24.119 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-07-26 11:15:24.121 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-07-26 11:15:24.123 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-07-26 11:15:24.127 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-07-26 11:15:24.129 +08:00 [DBG] Executing controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:15:24.283 +08:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2022-07-26 11:15:24.331 +08:00 [DBG] Executed controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:15:24.336 +08:00 [DBG] 测试所用
+2022-07-26 11:15:24.339 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.XmlDataContractSerializerOutputFormatter"]
+2022-07-26 11:15:24.344 +08:00 [DBG] No information found on request to perform content negotiation.
+2022-07-26 11:15:24.345 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2022-07-26 11:15:24.347 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2022-07-26 11:15:24.349 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2022-07-26 11:15:24.350 +08:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2022-07-26 11:15:24.361 +08:00 [INF] Executed action BriefResume.Controllers.AuthenticController.TryController (BriefResume) in 225.3647ms
+2022-07-26 11:15:24.363 +08:00 [INF] Executed endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:15:24.365 +08:00 [DBG] Connection id "0HMJEMK8CEH9R" completed keep alive response.
+2022-07-26 11:15:24.367 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Authentic - - - 200 - text/plain;+charset=utf-8 547.3727ms
+2022-07-26 11:17:27.679 +08:00 [INF] Application is shutting down...
+2022-07-26 11:17:27.690 +08:00 [DBG] Hosting stopping
+2022-07-26 11:17:27.721 +08:00 [DBG] Connection id "0HMJEMK8CEH9R" disconnecting.
+2022-07-26 11:17:27.722 +08:00 [DBG] Connection id "0HMJEMK8CEH9R" stopped.
+2022-07-26 11:17:27.722 +08:00 [DBG] Connection id "0HMJEMK8CEH9R" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:17:27.726 +08:00 [DBG] Hosting stopped
+2022-07-26 11:18:11.151 +08:00 [INF] Starting up
+2022-07-26 11:18:14.129 +08:00 [DBG] Hosting starting
+2022-07-26 11:18:14.274 +08:00 [INF] User profile is available. Using 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-26 11:18:14.318 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-5ee17901-3a58-460a-8b3e-58cab3656ee3.xml'.
+2022-07-26 11:18:14.344 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-d99e2bd1-9840-4fb2-8f4d-775c5583b6c3.xml'.
+2022-07-26 11:18:14.351 +08:00 [DBG] Found key {5ee17901-3a58-460a-8b3e-58cab3656ee3}.
+2022-07-26 11:18:14.360 +08:00 [DBG] Found key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3}.
+2022-07-26 11:18:14.374 +08:00 [DBG] Considering key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} with expiration date 2022-10-13 16:22:17Z as default key.
+2022-07-26 11:18:14.395 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 11:18:14.426 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2022-07-26 11:18:14.430 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-26 11:18:14.438 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2022-07-26 11:18:14.444 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2022-07-26 11:18:14.449 +08:00 [DBG] Using key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} as the default key.
+2022-07-26 11:18:14.456 +08:00 [DBG] Key ring with default key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} was loaded during application startup.
+2022-07-26 11:18:14.854 +08:00 [DBG] Using development certificate: CN=localhost (Thumbprint: 317523BFADB6C025CC8162F0380C816276E4BAFE)
+2022-07-26 11:18:15.096 +08:00 [INF] Now listening on: https://localhost:5001
+2022-07-26 11:18:15.099 +08:00 [INF] Now listening on: http://localhost:5000
+2022-07-26 11:18:15.117 +08:00 [DBG] Loaded hosting startup assembly BriefResume
+2022-07-26 11:18:15.125 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-26 11:18:15.127 +08:00 [INF] Hosting environment: Development
+2022-07-26 11:18:15.128 +08:00 [INF] Content root path: C:\Users\17643\source\repos\BriefResume
+2022-07-26 11:18:15.129 +08:00 [DBG] Hosting started
+2022-07-26 11:18:15.313 +08:00 [DBG] Connection id "0HMJEMLTB7N99" accepted.
+2022-07-26 11:18:15.319 +08:00 [DBG] Connection id "0HMJEMLTB7N99" started.
+2022-07-26 11:18:15.343 +08:00 [DBG] Connection id "0HMJEMLTB7N99" received FIN.
+2022-07-26 11:18:15.376 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.<FillHandshakeBufferAsync>g__InternalFillHandshakeBufferAsync|182_0[TIOAdapter](TIOAdapter adap, ValueTask`1 task, Int32 minSize)
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:18:15.618 +08:00 [DBG] Connection id "0HMJEMLTB7N99" stopped.
+2022-07-26 11:18:15.625 +08:00 [DBG] Connection id "0HMJEMLTB7N99" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:18:16.956 +08:00 [DBG] Connection id "0HMJEMLTB7N9A" accepted.
+2022-07-26 11:18:16.994 +08:00 [DBG] Connection id "0HMJEMLTB7N9A" started.
+2022-07-26 11:18:17.392 +08:00 [DBG] Connection "0HMJEMLTB7N9A" established using the following protocol: "Tls12"
+2022-07-26 11:18:17.538 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-07-26 11:18:17.544 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-07-26 11:18:17.607 +08:00 [DBG] No candidates found for the request path '/'
+2022-07-26 11:18:17.610 +08:00 [DBG] Request did not match any endpoints
+2022-07-26 11:18:17.728 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:18:17.744 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 209.4526ms
+2022-07-26 11:18:22.844 +08:00 [DBG] Connection id "0HMJEMLTB7N9B" accepted.
+2022-07-26 11:18:22.845 +08:00 [DBG] Connection id "0HMJEMLTB7N9B" received FIN.
+2022-07-26 11:18:22.853 +08:00 [DBG] Connection id "0HMJEMLTB7N9C" accepted.
+2022-07-26 11:18:22.853 +08:00 [DBG] Connection id "0HMJEMLTB7N9B" started.
+2022-07-26 11:18:22.853 +08:00 [DBG] Connection id "0HMJEMLTB7N9C" started.
+2022-07-26 11:18:22.856 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-26 11:18:22.858 +08:00 [DBG] Connection id "0HMJEMLTB7N9B" stopped.
+2022-07-26 11:18:22.859 +08:00 [DBG] Connection id "0HMJEMLTB7N9B" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:18:22.861 +08:00 [DBG] Connection "0HMJEMLTB7N9C" established using the following protocol: "Tls12"
+2022-07-26 11:18:22.869 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Authentic - -
+2022-07-26 11:18:22.886 +08:00 [DBG] 1 candidate(s) found for the request path '/api/Authentic'
+2022-07-26 11:18:22.891 +08:00 [DBG] Endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)' with route pattern 'api/Authentic' is valid for the request path '/api/Authentic'
+2022-07-26 11:18:22.893 +08:00 [DBG] Request matched endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:18:22.894 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:18:22.915 +08:00 [INF] Executing endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:18:22.926 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2022-07-26 11:18:22.964 +08:00 [INF] Route matched with {action = "TryController", controller = "Authentic"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TryController() on controller BriefResume.Controllers.AuthenticController (BriefResume).
+2022-07-26 11:18:22.970 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-07-26 11:18:22.972 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-07-26 11:18:22.973 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-07-26 11:18:22.974 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-07-26 11:18:22.979 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-07-26 11:18:22.983 +08:00 [DBG] Executing controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:18:23.066 +08:00 [DBG] Connection id "0HMJEMLTB7N9A" received FIN.
+2022-07-26 11:18:23.073 +08:00 [DBG] Connection id "0HMJEMLTB7N9A" is closed. The last processed stream ID was 1.
+2022-07-26 11:18:23.073 +08:00 [DBG] Connection id "0HMJEMLTB7N9A" sending FIN because: "The client closed the connection."
+2022-07-26 11:18:23.085 +08:00 [DBG] Connection id "0HMJEMLTB7N9A" stopped.
+2022-07-26 11:18:23.106 +08:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2022-07-26 11:18:23.153 +08:00 [DBG] Executed controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:18:23.158 +08:00 [DBG] serilog日志成功配置
+2022-07-26 11:18:23.161 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.XmlDataContractSerializerOutputFormatter"]
+2022-07-26 11:18:23.166 +08:00 [DBG] No information found on request to perform content negotiation.
+2022-07-26 11:18:23.168 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2022-07-26 11:18:23.169 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2022-07-26 11:18:23.171 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2022-07-26 11:18:23.172 +08:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2022-07-26 11:18:23.186 +08:00 [INF] Executed action BriefResume.Controllers.AuthenticController.TryController (BriefResume) in 198.9834ms
+2022-07-26 11:18:23.187 +08:00 [INF] Executed endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:18:23.189 +08:00 [DBG] Connection id "0HMJEMLTB7N9C" completed keep alive response.
+2022-07-26 11:18:23.194 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Authentic - - - 200 - text/plain;+charset=utf-8 324.3329ms
+2022-07-26 11:18:24.869 +08:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/Authentic - -
+2022-07-26 11:18:24.880 +08:00 [DBG] 1 candidate(s) found for the request path '/api/Authentic'
+2022-07-26 11:18:24.882 +08:00 [DBG] Endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)' with route pattern 'api/Authentic' is valid for the request path '/api/Authentic'
+2022-07-26 11:18:24.887 +08:00 [DBG] Request matched endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:18:24.894 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-26 11:18:24.898 +08:00 [INF] Executing endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:18:24.900 +08:00 [INF] Route matched with {action = "TryController", controller = "Authentic"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TryController() on controller BriefResume.Controllers.AuthenticController (BriefResume).
+2022-07-26 11:18:24.914 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-07-26 11:18:24.918 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-07-26 11:18:24.925 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-07-26 11:18:24.931 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-07-26 11:18:24.933 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-07-26 11:18:24.942 +08:00 [DBG] Executing controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:18:24.948 +08:00 [DBG] Executed controller factory for controller BriefResume.Controllers.AuthenticController (BriefResume)
+2022-07-26 11:18:24.951 +08:00 [DBG] serilog日志成功配置
+2022-07-26 11:18:24.959 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.XmlDataContractSerializerOutputFormatter"]
+2022-07-26 11:18:24.964 +08:00 [DBG] No information found on request to perform content negotiation.
+2022-07-26 11:18:24.969 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2022-07-26 11:18:24.974 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2022-07-26 11:18:24.976 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2022-07-26 11:18:24.980 +08:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2022-07-26 11:18:24.985 +08:00 [INF] Executed action BriefResume.Controllers.AuthenticController.TryController (BriefResume) in 42.3664ms
+2022-07-26 11:18:24.992 +08:00 [INF] Executed endpoint 'BriefResume.Controllers.AuthenticController.TryController (BriefResume)'
+2022-07-26 11:18:24.994 +08:00 [DBG] Connection id "0HMJEMLTB7N9C" completed keep alive response.
+2022-07-26 11:18:25.000 +08:00 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/Authentic - - - 200 - text/plain;+charset=utf-8 130.7575ms
+2022-07-26 11:18:31.315 +08:00 [INF] Application is shutting down...
+2022-07-26 11:18:31.316 +08:00 [DBG] Hosting stopping
+2022-07-26 11:18:31.339 +08:00 [DBG] Connection id "0HMJEMLTB7N9C" disconnecting.
+2022-07-26 11:18:31.340 +08:00 [DBG] Connection id "0HMJEMLTB7N9C" stopped.
+2022-07-26 11:18:31.340 +08:00 [DBG] Connection id "0HMJEMLTB7N9C" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-26 11:18:31.344 +08:00 [DBG] Hosting stopped

@@ -157,14 +157,5 @@ namespace BriefResume.Controllers
             }
         }
 
-        //暂定
-        private Linker CreateHateoasUri()
-        {
-            var HateoasUriDictionary = new Dictionary<string, Linker>();
-            var UriParameters= new Dictionary<string, List<object>>();
-
-        }
-
-
     }
 }
