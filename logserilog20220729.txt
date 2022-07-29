@@ -1,0 +1,56 @@
+2022-07-29 10:44:14.014 +08:00 [INF] Starting up
+2022-07-29 10:44:24.797 +08:00 [DBG] Hosting starting
+2022-07-29 10:44:24.946 +08:00 [INF] User profile is available. Using 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-29 10:44:24.988 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-5ee17901-3a58-460a-8b3e-58cab3656ee3.xml'.
+2022-07-29 10:44:25.062 +08:00 [DBG] Reading data from file 'C:\Users\17643\AppData\Local\ASP.NET\DataProtection-Keys\key-d99e2bd1-9840-4fb2-8f4d-775c5583b6c3.xml'.
+2022-07-29 10:44:25.076 +08:00 [DBG] Found key {5ee17901-3a58-460a-8b3e-58cab3656ee3}.
+2022-07-29 10:44:25.096 +08:00 [DBG] Found key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3}.
+2022-07-29 10:44:25.152 +08:00 [DBG] Considering key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} with expiration date 2022-10-13 16:22:17Z as default key.
+2022-07-29 10:44:25.226 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-29 10:44:25.302 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2022-07-29 10:44:25.345 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-07-29 10:44:25.513 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2022-07-29 10:44:25.527 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2022-07-29 10:44:25.538 +08:00 [DBG] Using key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} as the default key.
+2022-07-29 10:44:25.543 +08:00 [DBG] Key ring with default key {d99e2bd1-9840-4fb2-8f4d-775c5583b6c3} was loaded during application startup.
+2022-07-29 10:44:26.092 +08:00 [DBG] Using development certificate: CN=localhost (Thumbprint: 317523BFADB6C025CC8162F0380C816276E4BAFE)
+2022-07-29 10:44:26.221 +08:00 [INF] Now listening on: https://localhost:5001
+2022-07-29 10:44:26.221 +08:00 [INF] Now listening on: http://localhost:5000
+2022-07-29 10:44:26.224 +08:00 [DBG] Loaded hosting startup assembly BriefResume
+2022-07-29 10:44:26.226 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-07-29 10:44:26.227 +08:00 [INF] Hosting environment: Development
+2022-07-29 10:44:26.228 +08:00 [INF] Content root path: C:\Users\17643\source\repos\BriefResume
+2022-07-29 10:44:26.230 +08:00 [DBG] Hosting started
+2022-07-29 10:44:26.309 +08:00 [DBG] Connection id "0HMJH1H08V1KE" accepted.
+2022-07-29 10:44:26.319 +08:00 [DBG] Connection id "0HMJH1H08V1KE" started.
+2022-07-29 10:44:26.343 +08:00 [DBG] Connection id "0HMJH1H08V1KE" received FIN.
+2022-07-29 10:44:26.360 +08:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2022-07-29 10:44:26.453 +08:00 [DBG] Connection id "0HMJH1H08V1KE" stopped.
+2022-07-29 10:44:26.456 +08:00 [DBG] Connection id "0HMJH1H08V1KE" sending FIN because: "The Socket transport's send loop completed gracefully."
+2022-07-29 10:44:28.344 +08:00 [DBG] Connection id "0HMJH1H08V1KF" accepted.
+2022-07-29 10:44:28.473 +08:00 [DBG] Connection id "0HMJH1H08V1KF" started.
+2022-07-29 10:44:28.494 +08:00 [DBG] Connection id "0HMJH1H08V1KG" accepted.
+2022-07-29 10:44:28.525 +08:00 [DBG] Connection id "0HMJH1H08V1KG" started.
+2022-07-29 10:44:28.940 +08:00 [DBG] Connection "0HMJH1H08V1KF" established using the following protocol: "Tls12"
+2022-07-29 10:44:28.978 +08:00 [DBG] Connection "0HMJH1H08V1KG" established using the following protocol: "Tls12"
+2022-07-29 10:44:29.037 +08:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-07-29 10:44:29.045 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-07-29 10:44:29.091 +08:00 [DBG] No candidates found for the request path '/'
+2022-07-29 10:44:29.094 +08:00 [DBG] Request did not match any endpoints
+2022-07-29 10:44:29.200 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2022-07-29 10:44:29.213 +08:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 404 0 - 183.1652ms
+2022-07-29 10:44:31.110 +08:00 [DBG] Connection id "0HMJH1H08V1KG" received FIN.
+2022-07-29 10:44:31.111 +08:00 [DBG] Connection id "0HMJH1H08V1KF" received FIN.
+2022-07-29 10:44:31.121 +08:00 [DBG] Connection id "0HMJH1H08V1KF" is closed. The last processed stream ID was 1.
+2022-07-29 10:44:31.121 +08:00 [DBG] Connection id "0HMJH1H08V1KG" is closed. The last processed stream ID was 0.
+2022-07-29 10:44:31.124 +08:00 [DBG] Connection id "0HMJH1H08V1KF" sending FIN because: "The client closed the connection."
+2022-07-29 10:44:31.134 +08:00 [DBG] Connection id "0HMJH1H08V1KG" sending FIN because: "The client closed the connection."
+2022-07-29 10:44:31.136 +08:00 [DBG] Connection id "0HMJH1H08V1KF" stopped.
+2022-07-29 10:44:31.154 +08:00 [DBG] Connection id "0HMJH1H08V1KG" stopped.
+2022-07-29 10:44:35.764 +08:00 [INF] Application is shutting down...
+2022-07-29 10:44:35.765 +08:00 [DBG] Hosting stopping
+2022-07-29 10:44:35.807 +08:00 [DBG] Hosting stopped
