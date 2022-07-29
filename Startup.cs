@@ -54,7 +54,7 @@ namespace BriefResume
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         ValidateIssuer = true,
-                        ValidIssuer = _confirguration["Jwt:Issuer"],//也可以写成_confirguration
+                        ValidIssuer = _confirguration["Jwt:Issuer"],
                         ValidateAudience = true,
                         ValidAudience = _confirguration["Jwt:Audience"],
                         ValidateLifetime = true,
@@ -64,7 +64,7 @@ namespace BriefResume
             
 
             services.AddDataProtection();//密码加密服务
-            services.AddIdentityCore<Seeker>(opt => //与AddIdentity不同,AddIdentity还会添加默认界面
+            services.AddIdentityCore<Seeker>(opt =>
             {
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireLowercase = false;
@@ -102,10 +102,10 @@ namespace BriefResume
                 {
                     var problemDetail = new ValidationProblemDetails(context.ModelState)
                     {
-                        Type = "any",
+                        Type = "Type",
                         Title = "数据验证失败",
                         Status = StatusCodes.Status422UnprocessableEntity,//指定验证失败返回422
-                        Detail = "查看详细说明",
+                        Detail = "Detail",
                         Instance = context.HttpContext.Request.Path
                     };
                     problemDetail.Extensions.Add("traceId", context.HttpContext.TraceIdentifier);
@@ -122,11 +122,11 @@ namespace BriefResume
             services.AddTransient<IJobSeekerAttributeRepository, JobSeekerAttributeRepository>();
             //排序仓储
             services.AddTransient<IPropertyMappingService, PropertyMappingService>();
-
             //automapper注入
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            //缓存机制,不采用自动的服务器缓存,而是手动管理
+            //缓存机制,客户端缓存和内存缓存
+            //services.AddResponseCaching();
             services.AddMemoryCache();
 
         }

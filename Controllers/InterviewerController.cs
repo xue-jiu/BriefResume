@@ -10,6 +10,6 @@ namespace BriefResume.Controllers
     [ApiController]
     public class InterviewerController : ControllerBase
     {
-
+        //此controller与JobseekerController大同小异,故先不写
     }
 }

@@ -28,11 +28,23 @@ namespace BriefResume.Services
 
         public async Task<SeekerAttribute> GetSeekerAttributeBySeekerIdAsync(string seekerId)
         {
+            if (seekerId == null)
+            {
+                throw new ArgumentNullException(nameof(seekerId));
+            }
             return await _userDbContext.Users.Where(c => c.Id == seekerId).Select(c => c.SeekerAttribute).FirstOrDefaultAsync();
         }
 
         public async Task CreateSeekerAttributeAsync(SeekerAttribute seekerAttribute,string seekerId)
         {
+            if (seekerId == null)
+            {
+                throw new ArgumentNullException(nameof(seekerId));
+            }
+            if (seekerAttribute==null)
+            {
+                throw new ArgumentNullException(nameof(seekerAttribute));
+            }
             seekerAttribute.JobSeekerId = seekerId;
             await _userDbContext.seekerAttributes.AddAsync(seekerAttribute);
         }

@@ -40,6 +40,10 @@ namespace BriefResume.Services
         //根据一对一关系找出对应的Id
         public async Task<Guid> FindJobseekerIdAttributeAsync(string seekerId)
         {
+            if (seekerId == null)
+            {
+                throw new ArgumentNullException(nameof(seekerId));
+            }
             return await _userDbContext.seekerAttributes
                 .Where(c => c.JobSeekerId == seekerId)
                 .Select(c => c.SeekerAttributeId)
@@ -47,6 +51,10 @@ namespace BriefResume.Services
         }
         public async Task<Guid> FindInterviewerIdAttributeAsync(string seekerId)
         {
+            if (seekerId == null)
+            {
+                throw new ArgumentNullException(nameof(seekerId));
+            }
             return await _userDbContext.interviewerAttributes
                 .Where(c => c.InterviewerId == seekerId)
                 .Select(c => c.InterviewerAttributeId)

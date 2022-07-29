@@ -30,18 +30,21 @@ namespace BriefResume.Controllers
         private readonly IOptionsSnapshot<JwtSettings> _jwtSettings;
         private readonly ILogger<AuthenticController> _logger;
         private readonly IMemoryCache _memoryCache;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         public AuthenticController(
             SeekerManager UserManager, 
             IOptionsSnapshot<JwtSettings> optionsSnapshot, 
             RoleManager<RoleExtension>  roleManager,
             ILogger<AuthenticController> logger,
-            IMemoryCache memoryCache)
+            IMemoryCache memoryCache,
+            IHttpContextAccessor httpContextAccessor)
         {
             _seekerUserManager = UserManager;
             _seekerRoleManager = roleManager;
             _jwtSettings = optionsSnapshot;
             _logger = logger;
             _memoryCache = memoryCache;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpPost("Login")]
@@ -67,6 +70,7 @@ namespace BriefResume.Controllers
             //payload
             var claims = new List<Claim>
             {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
                 new Claim(ClaimTypes.NameIdentifier,user.Email)//将user的信息传出到Token
             };
             var roleNames = await _seekerUserManager.GetRolesAsync(user);
@@ -166,16 +170,20 @@ namespace BriefResume.Controllers
             return Ok("授权成功");
         }
 
-        //测试用
+        //测试用,获取用户Id
         [HttpGet]
+        [Authorize]
         public IActionResult TryController()
-        {
+        { 
             _logger.LogDebug("serilog日志成功配置");
            var item =  _memoryCache.GetOrCreate("TrymemoryCache",e=> 
             {
                 e.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(10);
                 _logger.LogInformation("内存缓存配置完成");
-                return "hahah"+DateTime.Now.ToString();
+                var userId = _httpContextAccessor
+                         .HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;//用这个方法找出Claim中的key,测试Cliam中的值是否成功传入
+                //可以通过Claim实现对不同特性的人物,写出不同的方法,也可以通过自定义identity 中Attribute
+                return userId + DateTime.Now.ToString();
             });
             return Ok(item);
         }

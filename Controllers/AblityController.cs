@@ -45,7 +45,8 @@ namespace BriefResume.Controllers
             {
                 return NotFound("这个人一点用都没有");
             }
-            return Ok(AblitiesFromRepo);
+           var AblitiesShowDto=  _mapper.Map<IEnumerable<AblityDto>>(AblitiesFromRepo);
+            return Ok(AblitiesShowDto);
         }
 
         [HttpPost]
@@ -109,6 +110,7 @@ namespace BriefResume.Controllers
             return Ok("删除成功");
         }
 
+        //测试所用
         [HttpGet("{ablityId}")]
         public IActionResult TryController([FromRoute] string ablityId)
         {
